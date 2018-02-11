@@ -21,4 +21,30 @@ public class play : MonoBehaviour {
         SceneManager.LoadScene(sceneName);
     }
 
+    /* Checking whether a gameObject was clicked (can be reused in other scenarios with minimum change)
+     * 
+     * Code for tracer minigame, made with mouse clicks rather than taps for testing purposes
+     * When the user clicks on the screen it checks if it clicked the required spots and
+     * prints appropriate message to the console.
+     */
+    public void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Debug.Log("Clicked");
+            Vector2 pos = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+            RaycastHit2D hitInfo = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(pos), Vector2.zero);
+           
+            if (hitInfo && hitInfo.transform.gameObject.tag == "spot")
+            {
+                Debug.Log(hitInfo.transform.gameObject.name);
+                Debug.Log("Spot tapped!");
+            }
+            else
+            {
+                Debug.Log("Missed!");
+            }
+        }
+    }
+
 }
