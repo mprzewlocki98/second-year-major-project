@@ -12,6 +12,7 @@ public class InjectionScript : MonoBehaviour {
 	private bool draggingItem = false;
 	private GameObject draggedObject, syringe1;
 	private Collider2D veinCollider;
+	private Vector3 lastGoodPosition;
 
 	void Start () {
 		syringe1 = GameObject.Find ("Syringe1");
@@ -46,10 +47,17 @@ public class InjectionScript : MonoBehaviour {
 
 	private void DropItem() {
 		if(draggedObject != null && draggedObject == syringe1 && draggingItem){
-			if (draggedObject.GetComponent<Collider2D>().IsTouching(veinCollider)) {
+			if (currentState == State.MOVE_SYRINGE && draggedObject.GetComponent<Collider2D>().IsTouching(veinCollider)) {
 				Debug.Log ("Syringe Dragged Correctly");
+				lastGoodPosition = draggedObject.transform.position;
+				currentState = State.INJECT_SYRINGE;
 				} else {
-				
+				Debug.Log ("Syringe Dragged Incorrectly"); 
+				if (currentState != State.INJECT_SYRINGE) {
+					draggedObject.transform.SetPositionAndRotation (new Vector3 (5.55f, 1.92f, 0f), draggedObject.transform.rotation);
+				} else {
+					draggedObject.transform.SetPositionAndRotation (lastGoodPosition, draggedObject.transform.rotation);
+				}
 			}
 		}
 
@@ -77,10 +85,6 @@ public class InjectionScript : MonoBehaviour {
 					}
 					break;
 				case State.MOVE_SYRINGE:
-					if (r.collider.name == "Syringe1") {
-						Debug.Log ("Correct!");
-						currentState = State.INJECT_SYRINGE;
-					}
 					break;
 				case State.INJECT_SYRINGE:
 					if (r.collider.name == "Syringe2") {
@@ -99,10 +103,6 @@ public class InjectionScript : MonoBehaviour {
 			DragOrPickup (); 
 		} else {
 			DropItem ();
-		}
-
-		if(syringe1.GetComponent<Collider2D>().IsTouching(veinCollider)){
-			Debug.Log ("The syringe is touching the vein");
 		}
 	}
 
