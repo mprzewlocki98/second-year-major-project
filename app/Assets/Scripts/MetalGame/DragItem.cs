@@ -7,7 +7,7 @@ public class DragItem : MonoBehaviour {
 	float elaspedSecond = 0;
 	float distance = 10;
 	bool flag = false;
-	GameObject obj;
+	GameObject obj = null;
 
 	void OnMouseDrag(){
 		obj = GetComponent<GameObject> ();

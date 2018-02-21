@@ -6,6 +6,7 @@ TagManager:
   tags:
   - spot
   - item
+  - Vein
   layers:
   - Default
   - TransparentFX
@@ -48,6 +49,9 @@ TagManager:
     locked: 0
   - name: character
     uniqueID: 159327417
+    locked: 0
+  - name: component
+    uniqueID: 487655717
     locked: 0
   - name: item
     uniqueID: 2208240015
