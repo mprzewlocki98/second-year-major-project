@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Drag : MonoBehaviour {
+public class DragItem : MonoBehaviour {
 	float decaySecond = 1f;
 	float elaspedSecond = 0;
 	float distance = 10;

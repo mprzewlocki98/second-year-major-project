@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 
-public class CompleteGame : MonoBehaviour {
+public class CompleteMetalGame : MonoBehaviour {
 
 	Animation animtion;
 	bool played = false;

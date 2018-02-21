@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class play : MonoBehaviour {
+public class playMetalGame : MonoBehaviour {
 	float hintSecond = 1f;
 	float speed = 10f; //how fast it shakes
 	float amount = 2f;//how much it shakes
