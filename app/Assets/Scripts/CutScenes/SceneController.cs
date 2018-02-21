@@ -158,6 +158,20 @@ static class Cutscenes
             new Response("Nurse",null,"Don't worry you will get them back later"),
             new Response("Nurse",null,"Doctor, why don't you help them out"),
 };
+		   case 3: return new Action[] {
+				new Response("Nurse",null,"Well done!"),
+				new Response("Kid",null,"HEYAHERERERASDASDASDASDASDASDAD"),
+				new Response("Nurse",null,"Then we introduce a injection meal game, which is what we are going to do next."),
+				new Response("Nurse",null,"Try this game, see if you can pass it"),
+			};
+
+
+			case 4: return new Action[] {
+				new Response("Nurse",null,"Good job!"),
+				new Response("Kid",null,"Hahahahahahahahaha"),
+				new Response("Nurse",null,"Next we have go to CT room, before that try CT scan game. It will help you know more about this scan."),
+				new Response("Nurse",null,"Let's go!"),
+			};
             default: return new Action[] {new Response("Developer",null,"You shouldn't be seeing this"),};
         }
     }

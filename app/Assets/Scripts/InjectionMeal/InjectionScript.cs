@@ -53,6 +53,8 @@ public class InjectionScript : MonoBehaviour {
 				lastGoodPosition = draggedObject.transform.position;
 				currentState = State.INJECT_SYRINGE;
 				} else {
+				Debug.Log (currentState);
+				Debug.Log (draggedObject.GetComponent<Collider2D>().IsTouching(veinCollider));
 				Debug.Log ("Syringe Dragged Incorrectly"); 
 				if (currentState != State.INJECT_SYRINGE) {
 					draggedObject.transform.SetPositionAndRotation (new Vector3 (5.55f, 1.92f, 0f), draggedObject.transform.rotation);
