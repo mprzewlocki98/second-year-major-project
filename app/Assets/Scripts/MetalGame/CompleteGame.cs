@@ -27,8 +27,8 @@ public class CompleteGame : MonoBehaviour {
 	}
 
 	void nextScene(){
-		SceneManager.LoadScene ("NextScene");
-	}
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
 
 	delegate bool successDelegate();
 

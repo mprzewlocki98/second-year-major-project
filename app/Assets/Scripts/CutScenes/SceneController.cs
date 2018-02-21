@@ -74,7 +74,7 @@ public class SceneController : MonoBehaviour {
             }
             else
             {
-                SceneManager.LoadScene("3-light-game");
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             }
         }
         else
