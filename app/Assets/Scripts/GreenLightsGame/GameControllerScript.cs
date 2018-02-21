@@ -33,7 +33,7 @@ public class GameControllerScript : MonoBehaviour {
 			SpawnLights();
 		}
         if (playerScore==10) {
-            PlayerWon("4-nextscene");
+            PlayerWon("4-cutscene");
         }
 	}
 

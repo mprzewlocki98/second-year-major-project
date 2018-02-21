@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour {
 
@@ -73,7 +74,7 @@ public class SceneController : MonoBehaviour {
             }
             else
             {
-                Application.LoadLevel(nextSceneID);
+                SceneManager.LoadScene("3-light-game");
             }
         }
         else
