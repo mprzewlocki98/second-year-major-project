@@ -4,6 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - spot
+  - item
   - Vein
   layers:
   - Default
@@ -47,4 +49,15 @@ TagManager:
     locked: 0
   - name: foreground
     uniqueID: 3216548205
+  - name: Background
+    uniqueID: 2565614445
+    locked: 0
+  - name: foreground
+    uniqueID: 1678059859
+    locked: 0
+  - name: character
+    uniqueID: 159327417
+    locked: 0
+  - name: item
+    uniqueID: 2208240015
     locked: 0
