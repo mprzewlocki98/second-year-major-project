@@ -598,7 +598,7 @@ GameObject:
   - component: {fileID: 1224139024}
   - component: {fileID: 1224139023}
   m_Layer: 8
-  m_Name: Hand
+  m_Name: Child
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
