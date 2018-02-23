@@ -32,6 +32,7 @@ Explain how to run the automated tests for this system.
 ## Closed branches
 
 You can retrive and recreate a closed branch with the following command:
+
 git checkout -b new_branch_name archive/<branchname>
 
 ## Acknowledgements
