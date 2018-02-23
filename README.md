@@ -29,6 +29,11 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 Explain how to run the automated tests for this system.
 
+## Closed branches
+
+You can retrive and recreate a closed branch with the following command:
+git checkout -b new_branch_name archive/<branchname>
+
 ## Acknowledgements
 
 List of APIs etc. will be listed here
