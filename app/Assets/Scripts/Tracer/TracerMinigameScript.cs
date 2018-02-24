@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class TracerMinigameScript : MonoBehaviour
 {
     public Text scoreDisplay;
+    public Animation animation;
 
     private int minigameScore = 0, spotsTapped = 0, max_spots = 5;
 
@@ -58,6 +59,7 @@ public class TracerMinigameScript : MonoBehaviour
 
     private void GameWon()
     {
+        animation.Play("wellDone");
         Debug.Log("Game won! Final game score: " + minigameScore);
         //LoadScene("next scene");
     }
