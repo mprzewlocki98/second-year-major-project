@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class InjectionScript : MonoBehaviour {
 
@@ -119,7 +120,7 @@ public class InjectionScript : MonoBehaviour {
                                 syringeAnimation.Play();
                                 Debug.Log("Correct!");
                                 currentState = State.DONE;
-                                Done();
+                                StartCoroutine(Done());
                             }
                             break;
                     }
@@ -136,7 +137,9 @@ public class InjectionScript : MonoBehaviour {
 		}
 	}
 
-	void Done () {
+	private IEnumerator Done() {
 		Debug.Log ("All done!");
+        yield return new WaitForSeconds(5);
+        SceneManager.LoadScene("8-cutscene");
 	}
 }
