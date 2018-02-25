@@ -5,9 +5,19 @@ using UnityEngine;
 public class GlassDrag : MonoBehaviour {
 
     public bool canDrag = true;
+    public float speed;
 
+    private bool isInPosition = false;
     private float distance = 10;
     private GameObject obj = null;
+    private GameObject glassToBe;
+    private Collider2D glassCollider;
+
+    void Start() {
+
+        glassToBe = GameObject.Find("glassCollider");
+        glassCollider = glassToBe.GetComponent<Collider2D>();
+    }
 
     void OnMouseDrag() { 
         
@@ -19,8 +29,12 @@ public class GlassDrag : MonoBehaviour {
         }
     }
 
-    void OnMouseUp()
-    {
+    void OnMouseUp() {
         
+        if (gameObject.GetComponent<Collider2D>().IsTouching(glassCollider)) {
+
+            canDrag = false;
+            gameObject.transform.position = new Vector3(glassToBe.transform.position.x, glassToBe.transform.position.y, gameObject.transform.position.z);
+        }
     }
 }

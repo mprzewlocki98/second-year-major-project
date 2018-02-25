@@ -16,11 +16,13 @@ public class OnMouseOverButton : MonoBehaviour {
         
 
         transform.localScale = newScale;
+        Debug.Log("Mouse Over");
     }
 
     private void OnMouseExit() {
 
         transform.localScale = normalScale;
+        Debug.Log("Mouse Exit");
     }
 
     private void ScaleFigure() {
