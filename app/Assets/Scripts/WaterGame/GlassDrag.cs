@@ -5,9 +5,8 @@ using UnityEngine;
 public class GlassDrag : MonoBehaviour {
 
     public bool canDrag = true;
-    public float speed;
 
-    private bool isInPosition = false;
+    private bool atPosition = false;
     private float distance = 10;
     private GameObject obj = null;
     private GameObject glassToBe;
@@ -34,7 +33,13 @@ public class GlassDrag : MonoBehaviour {
         if (gameObject.GetComponent<Collider2D>().IsTouching(glassCollider)) {
 
             canDrag = false;
+            atPosition = true;
             gameObject.transform.position = new Vector3(glassToBe.transform.position.x, glassToBe.transform.position.y, gameObject.transform.position.z);
         }
+    }
+
+    public bool IsAtPosition() {
+
+        return atPosition;
     }
 }

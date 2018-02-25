@@ -6,10 +6,16 @@ using UnityEngine.UI;
 public class ButtonClick : MonoBehaviour {
 
     public GameObject[] waterArray;
+
     private int nextWaterComponent = 0;
+    private GameObject glass;
+    private GlassDrag glassScript;
 
 	void Start () {
-		
+
+        glass = GameObject.Find("glass");
+        glassScript = glass.GetComponent<GlassDrag>();
+
         for (int i = 0; i < waterArray.Length; i++) {
 
             waterArray[i].SetActive(false);
@@ -18,10 +24,13 @@ public class ButtonClick : MonoBehaviour {
 	
     void OnMouseDown(){
 
-        if (nextWaterComponent < waterArray.Length) {
+        if (glassScript.IsAtPosition()) { 
 
-            waterArray[nextWaterComponent].SetActive(true);
-            nextWaterComponent++;
+            if (nextWaterComponent < waterArray.Length) {
+
+                waterArray[nextWaterComponent].SetActive(true);
+                nextWaterComponent++;
+            }
         }
     }
 	
