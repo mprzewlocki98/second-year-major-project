@@ -10,6 +10,7 @@ public class ButtonClick : MonoBehaviour {
     private int nextWaterComponent = 0;
     private GameObject glass;
     private GlassDrag glassScript;
+    private bool gameComplete;
 
 	void Start () {
 
@@ -30,11 +31,14 @@ public class ButtonClick : MonoBehaviour {
 
                 waterArray[nextWaterComponent].SetActive(true);
                 nextWaterComponent++;
+
+                if(nextWaterComponent == waterArray.Length) { gameComplete = true; }
             }
         }
     }
-	
-	void Update () {
-		
-	}
+
+    public bool GetGameComplete() {
+        return gameComplete;
+    }
+    
 }
