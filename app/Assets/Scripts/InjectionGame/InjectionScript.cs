@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -13,19 +12,24 @@ public class InjectionScript : MonoBehaviour {
     private bool easyMode = false;
 	private bool draggingItem = false;
 	private GameObject draggedObject, syringe1, syringe2, lid, creamBlob;
-    private Animation syringeAnimation, lidAnimation;
+    private Animation syringeAnimation, lidAnimation, wellDoneAnimation;
 	private Collider2D veinCollider;
 	private Vector3 lastGoodPosition;
 
+    // execute at start of game
 	void Start () {
         // load all the game objects so that they can be used
 		syringe1 = GameObject.Find ("Syringe1");
         syringe2 = GameObject.Find("Syringe2");
         lid = GameObject.Find("CreamLid");
         creamBlob = GameObject.Find("CreamBlob");
+
         veinCollider = GameObject.Find("Vein").GetComponent<Collider2D>();
+
         syringeAnimation = syringe2.GetComponent<Animation>();
         lidAnimation = lid.GetComponent<Animation>();
+        wellDoneAnimation = GameObject.Find("wellDone").GetComponent<Animation>();
+
         lastGoodPosition = syringe1.transform.position;
     }
 
@@ -86,6 +90,39 @@ public class InjectionScript : MonoBehaviour {
 
 		draggingItem = false;
 	}
+
+    // change the state of the game based on the object that was clicked
+    private IEnumerator ChangeState(RaycastHit2D raycastHit){
+       switch (currentState) {
+            case State.OPEN_CREAM:
+                if (raycastHit.collider.name == "CreamLid") {
+                    lidAnimation.Play();
+                    currentState = State.APPLY_CREAM;
+                }
+
+                yield return new WaitForSeconds(1);
+
+                break;
+            case State.APPLY_CREAM:
+                if (raycastHit.collider.name == "Cream") {
+                    currentState = State.MOVE_SYRINGE;
+                }
+
+                yield return new WaitForSeconds(1);
+
+                break;
+            case State.INJECT_SYRINGE:
+                if (raycastHit.collider.name == "Syringe2") {
+                    syringeAnimation.Play();
+                    currentState = State.DONE;
+                    StartCoroutine(Done());
+                }
+
+                yield return new WaitForSeconds(1);
+
+                break;
+       }
+    }
 		
 	void Update () {
 		var pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -94,36 +131,8 @@ public class InjectionScript : MonoBehaviour {
 			RaycastHit2D[] touches = Physics2D.RaycastAll (pos, pos, 0.5f); // all the touch positions in raw format
 
             if (touches.Length > 0) {
-                foreach (RaycastHit2D r in touches)
-                {
-                    switch (currentState) // game behaviour varies based on the current state
-                    {
-                        case State.OPEN_CREAM:
-                            if (r.collider.name == "CreamLid")
-                            {
-                                lidAnimation.Play();
-                                currentState = State.APPLY_CREAM;
-                            }
-                            break;
-                        case State.APPLY_CREAM:
-                            if (r.collider.name == "Cream")
-                            {
-                                Debug.Log("Correct!");
-                                currentState = State.MOVE_SYRINGE;
-                            }
-                            break;
-                        case State.MOVE_SYRINGE:
-                            break;
-                        case State.INJECT_SYRINGE:
-                            if (r.collider.name == "Syringe2")
-                            {
-                                syringeAnimation.Play();
-                                Debug.Log("Correct!");
-                                currentState = State.DONE;
-                                StartCoroutine(Done());
-                            }
-                            break;
-                    }
+                foreach (RaycastHit2D r in touches) {
+                    StartCoroutine(ChangeState(r));
                 }
             }
 		}
@@ -137,9 +146,12 @@ public class InjectionScript : MonoBehaviour {
 		}
 	}
 
+    // executed when the game is done
 	private IEnumerator Done() {
 		Debug.Log ("All done!");
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(1);
+        wellDoneAnimation.Play();
+        yield return new WaitForSeconds(4);
         SceneManager.LoadScene("8-cutscene");
 	}
 }
