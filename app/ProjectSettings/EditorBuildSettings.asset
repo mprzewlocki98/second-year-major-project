@@ -33,6 +33,7 @@ EditorBuildSettings:
     path: Assets/Scenes/8-cutscene.unity
     guid: 8d625835bd3ff4967b1da976657ca988
   - enabled: 1
+<<<<<<< HEAD
     path: Assets/Scenes/9-tracer-game.unity
     guid: 4556a87de98af9f4c9592a76716b4a2e
   - enabled: 1
@@ -50,3 +51,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/14-cutscene.unity
     guid: a045d6211a32edb4ab8461fcb737a83e
+=======
+    path: Assets/Scenes/WaterGame.unity
+    guid: 6390f81600029c348a97e8718e516703
+  - enabled: 1
+    path: Assets/Scenes/tracerMinigame.unity
+    guid: 4556a87de98af9f4c9592a76716b4a2e
+>>>>>>> water-game
