@@ -61,7 +61,7 @@ public class TracerMinigameScript : MonoBehaviour
     {
         animation.Play("wellDone");
         Debug.Log("Game won! Final game score: " + minigameScore);
-        LoadScene("10-films-game");
+        LoadScene("10-cutscene");
     }
 
     public void LoadScene(string sceneName)

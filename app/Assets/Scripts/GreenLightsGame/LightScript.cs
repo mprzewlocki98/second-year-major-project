@@ -68,11 +68,9 @@ public class LightScript : MonoBehaviour {
 	}
 
 	public void Pop() {
-		if (!isGreen) {
-			Deactivate();
-		} else {
-			gcScript.AddPoints(1);
-			Deactivate ();
-		}
+        Deactivate();
+        if (isGreen) {
+            gcScript.AddPoints(1);
+        } 
 	}
 }
