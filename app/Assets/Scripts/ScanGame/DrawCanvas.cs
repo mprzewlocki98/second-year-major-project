@@ -21,7 +21,7 @@ public class DrawCanvas : MonoBehaviour {
     void Start () {
         newTex = new Texture2D(oldTex.width,oldTex.height);       
         Color[] colors = oldTex.GetPixels(0, 0, oldTex.width, oldTex.height);
-        newTex.SetPixels(colors);      
+        newTex.SetPixels(colors);
     }
 
 

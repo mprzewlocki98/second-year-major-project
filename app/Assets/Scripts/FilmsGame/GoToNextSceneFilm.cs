@@ -2,9 +2,9 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GoToNextScene : MonoBehaviour {
+public class GoToNextSceneFilm : MonoBehaviour {
 
     public void ChangeScene(string sceneName){
-        SceneManager.LoadScene("11-cutscene");
+        SceneManager.LoadScene(sceneName);
     }
 }
