@@ -6,6 +6,7 @@ public class LightScript : MonoBehaviour {
 
 	public List<Sprite> lightImages;
     public Sprite greenLightImage;
+    public AudioClip sound;
 
     private GameControllerScript gcScript;
 
@@ -17,9 +18,18 @@ public class LightScript : MonoBehaviour {
 	void Start () {
 		ResetPosition();
 		gcScript = this.transform.parent.GetComponent<GameControllerScript>();
-	}
+        gameObject.AddComponent<AudioSource>();
+        source.clip = sound;
+        source.playOnAwake = false;
+    }
 
-	public void MakeGreen() {
+    private AudioSource source {
+        get {
+          return GetComponent<AudioSource>();
+        }
+    }
+
+    public void MakeGreen() {
 		isGreen = true;
         this.GetComponent<SpriteRenderer>().sprite = greenLightImage;
     }
@@ -68,6 +78,7 @@ public class LightScript : MonoBehaviour {
 	}
 
 	public void Pop() {
+        source.PlayOneShot(sound);
         Deactivate();
         if (isGreen) {
             gcScript.AddPoints(1);

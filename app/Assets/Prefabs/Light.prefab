@@ -170,5 +170,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 210b082ee5b2cfa469ef6f4608718c36, type: 3}
   - {fileID: 21300000, guid: 689f7f60668dc2047bbd285bd31b4f25, type: 3}
   greenLightImage: {fileID: 21300000, guid: 2e76e3a607a8b9146bceae7d250385b4, type: 3}
+  sound: {fileID: 8300000, guid: 0e3c25c61db1146f989bb0e42a050f75, type: 3}
   isActive: 0
   isGreen: 0
