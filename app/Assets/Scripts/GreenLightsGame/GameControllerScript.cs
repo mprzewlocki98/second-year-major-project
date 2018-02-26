@@ -8,20 +8,26 @@ public class GameControllerScript : MonoBehaviour {
 
 	public Transform lightPrefab;
 	public Text scoreDisplay;
+    Animation anim;
 
     private int playerScore = 0;
 	private float timeSinceLastSpawn = 0.0f;
 	private float timeToSpawn = 0.0f;
+    private bool played = false;
+    private bool showIcon = true;
 
-	private List<Transform> lights; // refers to the list of lights to be spawned
+    private List<Transform> lights; // refers to the list of lights to be spawned
     private const int LIGHTS_POOL = 35; // the number of light objects
 
 	void Start () {
+
         // this is during initialisation; the moment the game starts
 		lights = new List<Transform>();
 
+        anim = GetComponent<Animation>();
+
         // generate a light object and populate list
-		for (int i = 0; i < LIGHTS_POOL; i++) {
+        for (int i = 0; i < LIGHTS_POOL; i++) {
 			Transform oneLight = Instantiate(lightPrefab) as Transform;
 			oneLight.parent = this.transform;
 			lights.Add(oneLight);
@@ -38,14 +44,23 @@ public class GameControllerScript : MonoBehaviour {
             // lights will spawn if the time is ready to spawn
 			SpawnLights();
 		}
-        if (playerScore==10) {
-            // when the player has successfully won the game
-            PlayerWon("4-cutscene");
-        }
-	}
 
-    void PlayerWon(string sceneName) {
-        SceneManager.LoadScene(sceneName);
+        successDelegate methodToUse = checkSuccess;
+        played = methodToUse.Invoke();
+
+        if (played) {
+            if (showIcon) {
+                anim.Play();
+                showIcon = false;
+            }
+            Invoke("PlayerWon", 1);
+        }
+    }
+
+    delegate bool successDelegate();
+
+    void PlayerWon() {
+        SceneManager.LoadScene("4-cutscene");
     }
 
 	void SpawnLights() {
@@ -62,8 +77,14 @@ public class GameControllerScript : MonoBehaviour {
 		}
 	}
 
+    bool checkSuccess() {
+        if (playerScore == 1){
+            return true;
+        } return false;
+    }
+
     // method that will add points when player has tapped a green light
-	public void AddPoints(int points=1) {
+    public void AddPoints(int points=1) {
         playerScore += points;
         UpdateScoreDisplay();
 	}
