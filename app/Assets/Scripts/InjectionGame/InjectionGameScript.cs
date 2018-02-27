@@ -18,9 +18,8 @@ public class InjectionGameScript : MonoBehaviour {
         wellDoneAnimation = GameObject.Find("wellDone").GetComponent<Animation>();
     }
 
-
     // delay setting of state
-    public IEnumerator SetState(State targetState, float time = 0.25f) {
+    private IEnumerator SetState(State targetState, float time = 0.25f) {
         yield return new WaitForSeconds(time);
         currentState = targetState;
     }

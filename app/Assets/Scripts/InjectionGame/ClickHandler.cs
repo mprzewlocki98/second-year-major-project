@@ -117,7 +117,7 @@ public class ClickHandler : MonoBehaviour {
     }
 
     // delay disabling of an object
-    public IEnumerator DisableObject(GameObject obj) {
+    private IEnumerator DisableObject(GameObject obj) {
         yield return new WaitForSeconds(1);
         obj.SetActive(false);
     }
