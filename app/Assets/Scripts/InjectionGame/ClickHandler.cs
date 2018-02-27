@@ -47,7 +47,7 @@ public class ClickHandler : MonoBehaviour {
     }
 
     private void OnClickCream() {
-        if (injectionGameScript.currentState == InjectionGameScript.State.APPLY_CREAM) {
+        if (injectionGameScript.GetState() == InjectionGameScript.State.APPLY_CREAM) {
             draggedObject = creamBlob;
             PickupOrDragObject();
         }
@@ -79,7 +79,7 @@ public class ClickHandler : MonoBehaviour {
     }
 
     private void OnDropSyringe() {
-        if (injectionGameScript.currentState == InjectionGameScript.State.MOVE_SYRINGE && syringe1.GetComponent<Collider2D>().IsTouching(veinCollider)) {
+        if (injectionGameScript.GetState() == InjectionGameScript.State.MOVE_SYRINGE && syringe1.GetComponent<Collider2D>().IsTouching(veinCollider)) {
             syringeLastGoodPosition = syringe1.transform.position;
             syringe1.layer = 2;
 
@@ -91,7 +91,7 @@ public class ClickHandler : MonoBehaviour {
     }
 
     private void OnDropCreamBlob() {
-        if (injectionGameScript.currentState == InjectionGameScript.State.APPLY_CREAM && creamBlob.GetComponent<Collider2D>().IsTouching(veinCollider)) {
+        if (injectionGameScript.GetState() == InjectionGameScript.State.APPLY_CREAM && creamBlob.GetComponent<Collider2D>().IsTouching(veinCollider)) {
             creamBlob.GetComponent<Animation>().Play();
             StartCoroutine(DisableObject(creamBlob));
             injectionGameScript.ChangeState(InjectionGameScript.State.MOVE_SYRINGE);

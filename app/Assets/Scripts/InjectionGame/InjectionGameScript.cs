@@ -8,7 +8,7 @@ public class InjectionGameScript : MonoBehaviour {
 		OPEN_CREAM, APPLY_CREAM, MOVE_SYRINGE, INJECT_SYRINGE, DONE
 	};
 
-	public State currentState = State.OPEN_CREAM;
+	private State currentState = State.OPEN_CREAM;
     public bool easyMode = false;
 
     private Animation wellDoneAnimation;
@@ -23,6 +23,10 @@ public class InjectionGameScript : MonoBehaviour {
     public IEnumerator SetState(State targetState, float time = 0.25f) {
         yield return new WaitForSeconds(time);
         currentState = targetState;
+    }
+
+    public State GetState() {
+        return currentState;
     }
 
     // attempt to change the state and return if it was a success
