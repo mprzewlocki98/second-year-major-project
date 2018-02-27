@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class CompleteLightGame : MonoBehaviour {
@@ -18,13 +16,13 @@ public class CompleteLightGame : MonoBehaviour {
 
 	void Update(){
         // this will always check if player has won the game
-        successDelegate methodToUse = checkSuccess;
+        successDelegate methodToUse = CheckSuccess;
         played = methodToUse.Invoke();
 
         if (played) {
             if (showIcon) {
                 // makes the sprite renderer visible
-                gc.setSprender(true);
+                gc.SetSprender(true);
                 // play the animation
                 anim.Play("wellDone");
                 // stop the animation after once played
@@ -42,8 +40,8 @@ public class CompleteLightGame : MonoBehaviour {
 
     delegate bool successDelegate();
 
-    bool checkSuccess() {
-        if (gc.getPlayerScore() == 10) {
+    bool CheckSuccess() {
+        if (gc.GetPlayerScore() == 10) {
             return true;
         }
         return false;

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class DragItem : MonoBehaviour {
 	float decaySecond = 1f;
@@ -18,14 +16,12 @@ public class DragItem : MonoBehaviour {
 
 	void OnMouseUp () {
 		flag = true;
-		Destroy(this.gameObject,decaySecond); //delete
-//		gameObject.active = false; //hide
-//		renderer.enabled = false;
+		Destroy(this.gameObject, decaySecond); // destroy the object once it is dragged off
 	}
 
 	void Update(){
 		if (flag) {
-			float scaleRate = (decaySecond - elaspedSecond)/decaySecond;
+			float scaleRate = (decaySecond - elaspedSecond) / decaySecond;
 			transform.localScale *= scaleRate;
 			elaspedSecond += Time.deltaTime;
 		}
