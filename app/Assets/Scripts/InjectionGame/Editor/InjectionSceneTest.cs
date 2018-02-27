@@ -5,7 +5,7 @@ using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
 
-public class InjectionSceneTest : MonoBehaviour {
+public class InjectionSceneTest {
 
     [Test] // to see that it does not go to DONE straight away
     public void DoesNotGoToDoneStateImmediately() {
