@@ -7,10 +7,13 @@ public class DragItem : MonoBehaviour {
 	float elaspedSecond = 0;
 	float distance = 10;
 	bool flag = false;
-	GameObject obj = null;
+	GameObject obj;
+
+	void start (){
+		obj = GetComponent<GameObject> ();
+	}
 
 	void OnMouseDrag(){
-		obj = GetComponent<GameObject> ();
 		Vector3 mousePosition = new Vector3 (Input.mousePosition.x, Input.mousePosition.y, distance);
 		Vector3 objPosition = Camera.main.ScreenToWorldPoint (mousePosition);
 		transform.position = objPosition;
@@ -19,8 +22,6 @@ public class DragItem : MonoBehaviour {
 	void OnMouseUp () {
 		flag = true;
 		Destroy(this.gameObject,decaySecond); //delete
-//		gameObject.active = false; //hide
-//		renderer.enabled = false;
 	}
 
 	void Update(){
