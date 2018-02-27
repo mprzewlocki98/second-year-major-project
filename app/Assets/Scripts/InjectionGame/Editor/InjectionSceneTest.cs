@@ -4,11 +4,14 @@ using UnityEngine.TestTools;
 using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SceneManagement;
 
 public class InjectionSceneTest {
 
     [Test] // to see that it does not go to DONE straight away
     public void DoesNotGoToDoneStateImmediately() {
+        EditorSceneManager.OpenScene("Assets/Scenes/7-injection.unity", OpenSceneMode.Single);
+
         InjectionGameScript igs = GameObject.Find("GameHandler").GetComponent<InjectionGameScript>();
         bool success = igs.ChangeState(InjectionGameScript.State.DONE);
 
@@ -17,6 +20,8 @@ public class InjectionSceneTest {
 
     [Test] // to check that it does go from OPEN_CREAM to APPLY_CREAM
     public void GoesToCorrectStateFromStart() {
+        EditorSceneManager.OpenScene("Assets/Scenes/7-injection.unity", OpenSceneMode.Single);
+
         InjectionGameScript igs = GameObject.Find("GameHandler").GetComponent<InjectionGameScript>();
         bool success = igs.ChangeState(InjectionGameScript.State.APPLY_CREAM);
 
@@ -25,6 +30,8 @@ public class InjectionSceneTest {
 
     [Test]
     public void AllObjectsPresent() { // to check that all the objects in the scene are there
+        EditorSceneManager.OpenScene("Assets/Scenes/7-injection.unity", OpenSceneMode.Single);
+
         GameObject child, vein, cream, creamLid, syringe1, syringe2, creamBlob, wellDone, gameHandler;
 
         child = GameObject.Find("Child");
