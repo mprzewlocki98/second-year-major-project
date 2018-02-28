@@ -155,7 +155,7 @@ Animation:
   m_Animations:
   - {fileID: 7400000, guid: a44ed24775f92654f96e5ac747609df5, type: 2}
   m_WrapMode: 0
-  m_PlayAutomatically: 0
+  m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
 --- !u!212 &233159880
@@ -543,7 +543,7 @@ Animation:
   m_Animations:
   - {fileID: 7400000, guid: cb1687e93873adf4ca86e5289d72e287, type: 2}
   m_WrapMode: 0
-  m_PlayAutomatically: 0
+  m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
 --- !u!1 &732789422
@@ -588,7 +588,7 @@ Animation:
   m_Animations:
   - {fileID: 7400000, guid: 801ec8849d34b2041859966aeed9068e, type: 2}
   m_WrapMode: 0
-  m_PlayAutomatically: 0
+  m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
 --- !u!212 &732789425
@@ -829,7 +829,7 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 225932f422eec4eb195b6387ad99e20e, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.91585505, g: 0.9191176, b: 0.68258, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -952,7 +952,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43f57fa9f0337244cb29952dacf37441, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentState: 0
   easyMode: 0
 --- !u!4 &1269426548
 Transform:
@@ -1129,7 +1128,7 @@ Animation:
   m_Animations:
   - {fileID: 7400000, guid: 91530b849c35a034baad421aba3a1ec1, type: 2}
   m_WrapMode: 0
-  m_PlayAutomatically: 0
+  m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
 --- !u!212 &1616840015
