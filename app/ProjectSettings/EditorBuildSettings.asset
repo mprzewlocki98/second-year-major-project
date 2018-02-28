@@ -43,7 +43,7 @@ EditorBuildSettings:
     guid: 40ebc904dd0544aea9efc77e8a80167e
   - enabled: 1
     path: Assets/Scenes/12-cutscene.unity
-    guid: 3f1b4b687bf4e4a0a91085dccffe630d
+    guid: 7f78535e7c6bd4c7aac9d3851d4c236e
   - enabled: 1
     path: Assets/Scenes/13-scan-game.unity
     guid: fd8015de5f86a5241987c8f8464d2f57
