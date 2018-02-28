@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
 
 public class LightScript : MonoBehaviour {
@@ -19,11 +18,11 @@ public class LightScript : MonoBehaviour {
 		ResetPosition();
 		gcScript = this.transform.parent.GetComponent<GameControllerScript>();
         gameObject.AddComponent<AudioSource>();
-        source.clip = sound;
-        source.playOnAwake = false;
+        Source.clip = sound;
+        Source.playOnAwake = false;
     }
 
-    private AudioSource source {
+    private AudioSource Source {
         get {
           return GetComponent<AudioSource>();
         }
@@ -78,7 +77,7 @@ public class LightScript : MonoBehaviour {
 	}
 
 	public void Pop() {
-        source.PlayOneShot(sound);
+        Source.PlayOneShot(sound);
         Deactivate();
         if (isGreen) {
             gcScript.AddPoints(1);

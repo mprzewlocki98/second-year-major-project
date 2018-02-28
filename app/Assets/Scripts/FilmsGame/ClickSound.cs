@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Button))]
@@ -7,25 +6,25 @@ public class ClickSound : MonoBehaviour {
 
     public AudioClip sound;
     
-    private Button button {
+    private Button Button {
         get { return GetComponent<Button>();}
     }
     
-    private AudioSource source {
+    private AudioSource Source {
         get { return GetComponent<AudioSource>();}
     }
 
 	void Start () {
 		gameObject.AddComponent<AudioSource>();
-        source.clip = sound;
-        source.playOnAwake = false;
+        Source.clip = sound;
+        Source.playOnAwake = false;
         
-        button.onClick.AddListener(()=>PlaySound());
+        Button.onClick.AddListener(()=>PlaySound());
     
 	}
 	
     void PlaySound() {
-        source.PlayOneShot(sound);
+        Source.PlayOneShot(sound);
     }
 
 }

@@ -1,8 +1,6 @@
 ﻿using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class GameControllerScript : MonoBehaviour {
 
@@ -59,11 +57,11 @@ public class GameControllerScript : MonoBehaviour {
 		}
 	}
 
-    public void setSprender(bool x) {
+    public void SetSprender(bool x) {
         sprender.enabled = x;
     }
 
-    public int getPlayerScore() {
+    public int  GetPlayerScore() {
         return playerScore;
     }
 
