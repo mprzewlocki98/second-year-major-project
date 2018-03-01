@@ -7,11 +7,13 @@ using UnityEngine.SceneManagement;
 public class WaterGamePlayModeTest {
 
     [UnityTest]
-    public void TestTemplate() // a template for unit tests in play mode
+    public IEnumerator TestTemplate() // a template for unit tests in play mode
     {
         SceneManager.LoadScene("5-metal-game", LoadSceneMode.Single);
 
-        Assert.Pass();
+        yield return null;
+
+        Assert.AreEqual(1, 1);
     }
 
 }
