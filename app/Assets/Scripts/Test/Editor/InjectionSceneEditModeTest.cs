@@ -6,7 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.SceneManagement;
 
-public class InjectionSceneTest {
+public class InjectionSceneEditModeTest {
 
     [Test] // to see that it does not go to DONE straight away
     public void DoesNotGoToDoneStateImmediately() {

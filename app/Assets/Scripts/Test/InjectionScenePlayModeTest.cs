@@ -4,7 +4,7 @@ using NUnit.Framework;
 using System.Collections;
 using UnityEngine.SceneManagement;
 
-public class NewPlayModeTest {
+public class InjectionScenePlayModeTest {
 
     [UnityTest]
     public IEnumerator ChronologicalStateTest() // to check the states go in chronological order
