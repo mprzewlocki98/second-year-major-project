@@ -12,6 +12,8 @@ public class GlassDrag : MonoBehaviour {
     private GameObject glassToBe;
     private Collider2D glassCollider;
 
+    private bool easyMode = Difficulty.easyMode;
+
     void Start() {
 
         glassToBe = GameObject.Find("glassCollider");

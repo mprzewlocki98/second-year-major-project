@@ -1,13 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class playMetalGame : MonoBehaviour {
 	float hintSecond = 1f;
 	float speed = 10f; //how fast it shakes
 	float amount = 2f;//how much it shakes
 	bool processEnd = true;
-	Vector3 mousePos;
+
+    private bool easyMode = Difficulty.easyMode;
+
+    Vector3 mousePos;
 
 	// Use this for initialization
 	void Start () {
