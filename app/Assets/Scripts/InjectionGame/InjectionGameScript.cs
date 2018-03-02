@@ -9,7 +9,7 @@ public class InjectionGameScript : MonoBehaviour {
 	};
 
 	private State currentState = State.OPEN_CREAM;
-    public bool easyMode = false;
+    private bool easyMode = Difficulty.easyMode;
 
     private Animation wellDoneAnimation;
 

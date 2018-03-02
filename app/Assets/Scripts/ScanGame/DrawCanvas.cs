@@ -11,6 +11,8 @@ public class DrawCanvas : MonoBehaviour {
     public UnityEngine.UI.Text textPercent;
     public UnityEngine.UI.Image buttonContinue;
 
+    private bool easyMode = Difficulty.easyMode;
+
     public int scanned = 0;
 
     Vector2 lastpos = new Vector2(-1,-1);
