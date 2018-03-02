@@ -66,6 +66,12 @@ public class ClickHandler : MonoBehaviour {
         } else if (gameObject == syringe2) {
             OnClickSyringe2();
         }
+
+        AudioSource sound = gameObject.GetComponent<AudioSource>();
+
+        if (sound){
+            sound.Play();
+        }
     }
 
     // Functions concerned with dragging objects
@@ -93,6 +99,7 @@ public class ClickHandler : MonoBehaviour {
     private void OnDropCreamBlob() {
         if (injectionGameScript.GetState() == InjectionGameScript.State.APPLY_CREAM && creamBlob.GetComponent<Collider2D>().IsTouching(veinCollider)) {
             creamBlob.GetComponent<Animation>().Play();
+            creamBlob.GetComponent<AudioSource>().Play();
             StartCoroutine(DisableObject(creamBlob));
             injectionGameScript.ChangeState(InjectionGameScript.State.MOVE_SYRINGE);
         }
