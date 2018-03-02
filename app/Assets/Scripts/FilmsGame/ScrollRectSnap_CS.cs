@@ -11,9 +11,11 @@ public class ScrollRectSnap_CS : MonoBehaviour {
     private bool dragging = false;
     private int bttnDistance;
     private int minButtonNum;
-    
+
+    private bool easyMode = Difficulty.easyMode;
+
     // Use this for initialization
-	void Start () {
+    void Start () {
 		int bttnLength = bttn.Length;
         distance=new float[bttnLength];
         

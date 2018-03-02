@@ -9,6 +9,7 @@ public class TracerMinigameScript : MonoBehaviour
     public Animation animation;
 
     private int minigameScore = 0, spotsTapped = 0, max_spots = 5;
+    private bool easyMode = Difficulty.easyMode;
 
     // Checking whether a gameObject was clicked 
     public void Update()

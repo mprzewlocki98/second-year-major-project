@@ -12,6 +12,8 @@ public class GameControllerScript : MonoBehaviour {
 	private float timeSinceLastSpawn = 0.0f;
 	private float timeToSpawn = 0.0f;
 
+    private bool easyMode = Difficulty.easyMode;
+
     private List<Transform> lights; // refers to the list of lights to be spawned
     private const int LIGHTS_POOL = 35; // the number of light objects
 
