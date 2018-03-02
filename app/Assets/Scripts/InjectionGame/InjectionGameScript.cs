@@ -10,18 +10,62 @@ public class InjectionGameScript : MonoBehaviour {
 
 	private State currentState = State.OPEN_CREAM;
     private bool easyMode = Difficulty.easyMode;
+    private GameObject arrow1, arrow2, arrow3, arrow4;
 
     private Animation wellDoneAnimation;
 
     // execute at start of game
 	void Start () {
+        arrow1 = GameObject.Find("Arrow1");
+        arrow2 = GameObject.Find("Arrow2");
+        arrow3 = GameObject.Find("Arrow3");
+        arrow4 = GameObject.Find("Arrow4");
+
+        if (easyMode) {
+            ShowArrow();
+        }
+
         wellDoneAnimation = GameObject.Find("wellDone").GetComponent<Animation>();
     }
 
     // delay setting of state
-    private IEnumerator SetState(State targetState, float time = 0.25f) {
+    private IEnumerator SetState(State targetState, float time = 0.1f) {
         yield return new WaitForSeconds(time);
         currentState = targetState;
+
+        if (easyMode) {
+            ShowArrow();
+        }
+    }
+
+    public void HideArrowsExcept(GameObject arrowToKeep) {
+        GameObject[] arrows = { arrow1, arrow2, arrow3, arrow4 };
+
+        if (arrowToKeep == null) {
+            foreach (GameObject arrow in arrows) {
+                arrow.SetActive(false);
+            }
+        } else {
+            foreach (GameObject arrow in arrows) {
+                if (!(arrow.Equals(arrowToKeep))){
+                    arrow.SetActive(false);
+                }
+            }
+        }
+    }
+
+    public void ShowArrow() {
+        GameObject[] arrows = { arrow1, arrow2, arrow3, arrow4, null };
+        GameObject arrow = arrows[(int)currentState];
+        Debug.Log((int)currentState);
+
+        if(arrow == null) {
+            HideArrowsExcept(null);
+        } else {
+            arrow.SetActive(true);
+            arrow.GetComponent<Animation>().Play();
+            HideArrowsExcept(arrow);
+        }
     }
 
     public State GetState() {
