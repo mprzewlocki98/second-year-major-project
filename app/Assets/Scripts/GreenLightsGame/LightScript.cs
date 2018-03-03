@@ -8,6 +8,7 @@ public class LightScript : MonoBehaviour {
     public AudioClip sound;
 
     private GameControllerScript gcScript;
+    private bool easyMode = Difficulty.easyMode;
 
     // lights will be by default, inactive and not green
     public bool isActive = false;
@@ -52,11 +53,20 @@ public class LightScript : MonoBehaviour {
 	}
 
 	public void Activate() {
-		isActive = true;
-		float upSpeed = Random.Range (2.0f, 4.5f); // light speeds are random from 2 to 4.5
+        float upSpeed;
+        isActive = true;
+
+        // speed of the light depends on the difficulty
+        if (easyMode) {
+            upSpeed = Random.Range(1.0f, 2.5f); // light speeds are random from 1 to 2.5
+        } else {
+            upSpeed = Random.Range(2.0f, 6.5f); // light speeds are random from 2 to 6.5
+        }
+		
 		this.GetComponent<Rigidbody2D>().velocity = new Vector3(0.0f, upSpeed, 0.0f);
-		this.transform.position = new Vector3(Random.Range (-2.4f, 2.45f), -6.0f, 0.0f); 
+		this.transform.position = new Vector3(Random.Range (-7.4f, 5.45f), -6.0f, 0.0f); 
         // this makes the lights look like they're moving by changing the position
+        
         // the condition to either make the light green or otherwise
 		if (Random.Range(0,4) == 0) {
 			MakeGreen();

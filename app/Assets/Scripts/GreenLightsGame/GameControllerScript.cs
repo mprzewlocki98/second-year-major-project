@@ -12,16 +12,15 @@ public class GameControllerScript : MonoBehaviour {
 	private float timeSinceLastSpawn = 0.0f;
 	private float timeToSpawn = 0.0f;
 
-    private bool easyMode = Difficulty.easyMode;
-
     private List<Transform> lights; // refers to the list of lights to be spawned
     private const int LIGHTS_POOL = 35; // the number of light objects
 
 	void Start () {
-
         // this is during initialisation; the moment the game starts
 		lights = new List<Transform>();
 
+        // sprender refers to the Sprite Renderer (Well Done), which is the game object
+        // shown when the game is completed. it is first disabled 
         sprender = gameObject.GetComponent<SpriteRenderer>();
         sprender.enabled = false;
 
@@ -47,7 +46,7 @@ public class GameControllerScript : MonoBehaviour {
 
 	void SpawnLights() {
 		timeSinceLastSpawn = 0.0f; // float is used for precision
-		timeToSpawn = Random.Range (0.0f, 2.0f); // random time generated to spawn light
+		timeToSpawn = Random.Range (0.0f, 1.5f); // random time generated to spawn light
 
         foreach (Transform b in lights) {
 			LightScript ls = b.GetComponent<LightScript>(); // getComponent is to retrieve the script for lights
