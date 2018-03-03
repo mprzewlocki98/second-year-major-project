@@ -4,6 +4,7 @@ using UnityEngine;
 public class ClickHandler : MonoBehaviour {
 
     private InjectionGameScript injectionGameScript;
+    private bool playingSound = false;
     private Collider2D veinCollider;
     
     private static GameObject cream, creamLid, syringe1, syringe2, creamBlob;
@@ -69,7 +70,8 @@ public class ClickHandler : MonoBehaviour {
 
         AudioSource sound = gameObject.GetComponent<AudioSource>();
 
-        if (sound){
+        if (sound && !playingSound){
+            playingSound = true;
             sound.Play();
         }
     }
@@ -117,6 +119,7 @@ public class ClickHandler : MonoBehaviour {
         }
 
         draggedObject = null;
+        playingSound = false;
     }
 
     private Vector2 CurrentTouchPosition {
