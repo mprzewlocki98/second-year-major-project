@@ -8,8 +8,13 @@ public class TracerMinigameScript : MonoBehaviour
     public Text scoreDisplay;
     public Animation animation;
 
+    
     private int minigameScore = 0, spotsTapped = 0, max_spots = 10;
-    private bool easyMode = Difficulty.easyMode;
+
+    public void Start()
+    {
+        setSpotRadius();
+    }
 
     // Checking whether a gameObject was clicked 
     public void Update()
@@ -62,6 +67,25 @@ public class TracerMinigameScript : MonoBehaviour
         animation.Play("wellDone");
         Debug.Log("Game won! Final game score: " + minigameScore);
         StartCoroutine(Wait(3));
+    }
+
+    // sets the spots collider radius based on game difficulty
+    // a higher radius value means less accuracy is needed for a successful spot tap
+    private void setSpotRadius()
+    {
+        bool easyMode = Difficulty.easyMode;
+        GameObject[] spots;
+        float easyRadius = 0.6f, hardRadius = 0.4f;
+
+        spots = GameObject.FindGameObjectsWithTag("spot");
+
+        foreach (GameObject spot in spots)
+        {
+            CircleCollider2D collider = spot.GetComponent<CircleCollider2D>();
+
+            if (easyMode) { collider.radius = easyRadius; }
+            else { collider.radius = hardRadius; }
+        }
     }
 
     // wait then load scene; needed to show wellDone animation before proceeding

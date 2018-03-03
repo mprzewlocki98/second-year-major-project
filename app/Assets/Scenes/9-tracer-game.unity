@@ -422,7 +422,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: -0.35, y: -2.25}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.4
 --- !u!50 &411305273
 Rigidbody2D:
   serializedVersion: 4
@@ -631,7 +631,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: -0.35, y: -2.25}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.4
 --- !u!50 &556344330
 Rigidbody2D:
   serializedVersion: 4
@@ -1300,7 +1300,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: -0.35, y: -2.25}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.4
 --- !u!50 &1115085518
 Rigidbody2D:
   serializedVersion: 4
@@ -1658,7 +1658,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: -0.35, y: -2.25}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.4
 --- !u!50 &1226399306
 Rigidbody2D:
   serializedVersion: 4
@@ -1772,7 +1772,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: -0.35, y: -2.25}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.4
 --- !u!50 &1262398132
 Rigidbody2D:
   serializedVersion: 4
@@ -1886,7 +1886,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: -0.35, y: -2.25}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.4
 --- !u!50 &1294890093
 Rigidbody2D:
   serializedVersion: 4
@@ -2000,7 +2000,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: -0.35, y: -2.25}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.4
 --- !u!50 &1330935803
 Rigidbody2D:
   serializedVersion: 4
@@ -2459,7 +2459,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: -0.35, y: -2.25}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.4
 --- !u!50 &1660085116
 Rigidbody2D:
   serializedVersion: 4
@@ -2769,7 +2769,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: -0.35, y: -2.25}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.4
 --- !u!50 &2008766501
 Rigidbody2D:
   serializedVersion: 4
@@ -3005,7 +3005,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: -0.35, y: -2.25}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.4
 --- !u!50 &2109714028
 Rigidbody2D:
   serializedVersion: 4
