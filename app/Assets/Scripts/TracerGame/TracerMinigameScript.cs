@@ -8,7 +8,7 @@ public class TracerMinigameScript : MonoBehaviour
     public Text scoreDisplay;
     public Animation animation;
 
-    private int minigameScore = 0, spotsTapped = 0, max_spots = 5;
+    private int minigameScore = 0, spotsTapped = 0, max_spots = 10;
     private bool easyMode = Difficulty.easyMode;
 
     // Checking whether a gameObject was clicked 
