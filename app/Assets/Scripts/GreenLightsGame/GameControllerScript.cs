@@ -73,7 +73,7 @@ public class GameControllerScript : MonoBehaviour {
 	}
 
 	void UpdateScoreDisplay() {
-        scoreDisplay.text = "Score:  " + playerScore.ToString();
+        scoreDisplay.text = playerScore.ToString() + " tapped!";
 	}
 
 	public void GameStart() {
