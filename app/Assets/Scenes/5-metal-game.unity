@@ -176,7 +176,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -2086727281
-  m_SortingLayer: 4
+  m_SortingLayer: 6
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 261f4d6d703944bb88e799fe088c0576, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -199,6 +199,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b16c8fefa8784a2abc07613034ad3ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clickSound: {fileID: 8300000, guid: 0e3c25c61db1146f989bb0e42a050f75, type: 3}
 --- !u!65 &12396985
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -274,7 +275,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -2086727281
-  m_SortingLayer: 4
+  m_SortingLayer: 6
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 86915a7ee01444b8a8531ed321fa2930, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -297,6 +298,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b16c8fefa8784a2abc07613034ad3ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clickSound: {fileID: 8300000, guid: 0e3c25c61db1146f989bb0e42a050f75, type: 3}
 --- !u!65 &30749070
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -359,7 +361,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 159327417
-  m_SortingLayer: 3
+  m_SortingLayer: 5
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: c80d62a8b03e24986acb2231ddbb1ba3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -491,7 +493,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 159327417
-  m_SortingLayer: 3
+  m_SortingLayer: 5
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: c84c6071c76404f4b8eba6b3b3cebc5b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -579,7 +581,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -2086727281
-  m_SortingLayer: 4
+  m_SortingLayer: 6
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 73e15fab25b8248689dbd60e57d94cd4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -602,6 +604,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b16c8fefa8784a2abc07613034ad3ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clickSound: {fileID: 8300000, guid: 0e3c25c61db1146f989bb0e42a050f75, type: 3}
 --- !u!65 &684458317
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -758,7 +761,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -2086727281
-  m_SortingLayer: 4
+  m_SortingLayer: 6
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 8a9f1b965b63b4db8bebd5924b9794b5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -781,6 +784,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b16c8fefa8784a2abc07613034ad3ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clickSound: {fileID: 8300000, guid: 0e3c25c61db1146f989bb0e42a050f75, type: 3}
 --- !u!65 &1143277484
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -841,14 +845,14 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1729352851
-  m_SortingLayer: 1
+  m_SortingLayer: 3
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 0b964d4de273241b7945a7ffa04646b3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3040f3fc6d7d642159b234e257f3ce1f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 27.570002, y: 17.820002}
+  m_Size: {x: 26.4, y: 14.850001}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -860,7 +864,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1878212478}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.13, y: 0.34, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -929,7 +933,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -2086727281
-  m_SortingLayer: 4
+  m_SortingLayer: 6
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: a549d3627afa14da98f04112a52a7fa9, type: 3}
   m_Color: {r: 0.7607844, g: 0.7607844, b: 0.7607844, a: 1}
@@ -952,6 +956,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b16c8fefa8784a2abc07613034ad3ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clickSound: {fileID: 8300000, guid: 0e3c25c61db1146f989bb0e42a050f75, type: 3}
 --- !u!65 &2068730947
 BoxCollider:
   m_ObjectHideFlags: 0

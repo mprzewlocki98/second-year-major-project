@@ -40,7 +40,7 @@ public class ScrollRectSnap_CS : MonoBehaviour {
         }
     }
 	
-    void LerpToBttn(int position){
+    public void LerpToBttn(int position){
         float newX = Mathf.Lerp(panel.anchoredPosition.x, position, Time.deltaTime * 2.5f);
         Vector2 newPosition = new Vector2(newX, panel.anchoredPosition.y);
 
