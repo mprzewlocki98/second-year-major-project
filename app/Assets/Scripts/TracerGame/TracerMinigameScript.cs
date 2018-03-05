@@ -87,8 +87,11 @@ public class TracerMinigameScript : MonoBehaviour
         foreach (GameObject spot in spots)
         {
             CircleCollider2D collider = spot.GetComponent<CircleCollider2D>();
-            if (easyMode) { collider.radius = easyRadius; }
-            else { collider.radius = hardRadius; }
+
+            if (easyMode)
+            { collider.radius = easyRadius; }
+            else
+            { collider.radius = hardRadius; }
         }
     }
 
@@ -99,26 +102,10 @@ public class TracerMinigameScript : MonoBehaviour
         {
             SpriteRenderer sprite = spot.GetComponent<SpriteRenderer>();
 
-            // position and offset settings are a bugfix (glowing sprite incorrect defaults for them in unity)
-            Transform position = spot.GetComponent<Transform>();
-            Vector3 pos = new Vector3(0.35f, 2.55f, 0); 
-            Vector2 offs = new Vector2(0.35f, 2.25f); 
-            CircleCollider2D collider = spot.GetComponent<CircleCollider2D>();
-
             if (isGlowing)
-            {
-                sprite.sprite = glowing;
-
-                position.position += pos;
-                collider.offset -= offs;
-            }
+            { sprite.sprite = glowing; }
             else
-            {
-                sprite.sprite = notGlowing;
-
-                position.position -= pos;
-                collider.offset += offs;
-            }
+            { sprite.sprite = notGlowing; }
         }
         isGlowing = !isGlowing;
     }

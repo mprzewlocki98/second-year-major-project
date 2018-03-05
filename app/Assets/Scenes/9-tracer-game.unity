@@ -1268,7 +1268,7 @@ MonoBehaviour:
   scoreDisplay: {fileID: 1829406601}
   animation: {fileID: 1478350704}
   glowing: {fileID: 21300000, guid: 834792102c9e7744b999c62f81cd82c5, type: 3}
-  notGlowing: {fileID: 21300000, guid: f12a659d32a8cbe45894142406548aec, type: 3}
+  notGlowing: {fileID: 21300000, guid: 437355024e246bc4c8c8bdb099c13127, type: 3}
 --- !u!1 &1115085515
 GameObject:
   m_ObjectHideFlags: 0
