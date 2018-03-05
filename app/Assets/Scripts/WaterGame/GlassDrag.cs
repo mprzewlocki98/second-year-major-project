@@ -5,12 +5,15 @@ using UnityEngine;
 public class GlassDrag : MonoBehaviour {
 
     public bool canDrag = true;
+    public AudioClip Glass_drag;
+    public AudioClip Glass_drop;
 
     private bool atPosition = false;
     private float distance = 10;
     private GameObject obj = null;
     private GameObject glassToBe;
     private Collider2D glassCollider;
+    private bool didAudioPlay = false;
 
     private bool easyMode = Difficulty.easyMode;
 
@@ -20,18 +23,30 @@ public class GlassDrag : MonoBehaviour {
         glassCollider = glassToBe.GetComponent<Collider2D>();
     }
 
-    void OnMouseDrag() { 
-        
+    void OnMouseDrag() {
+
         if (canDrag) { 
             obj = GetComponent<GameObject>();
             Vector3 mousePosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, distance);
             Vector3 objPosition = Camera.main.ScreenToWorldPoint(mousePosition);
             transform.position = objPosition;
+
+            if (!didAudioPlay) {
+                AudioSource sound = gameObject.GetComponent<AudioSource>();
+                sound.PlayOneShot(Glass_drag, 0.1F);
+                didAudioPlay = true;
+            }
         }
     }
 
     void OnMouseUp() {
-        
+
+        if (canDrag) {
+            AudioSource sound = gameObject.GetComponent<AudioSource>();
+            sound.PlayOneShot(Glass_drop, 0.4F);
+            didAudioPlay = false;
+        }
+
         if (gameObject.GetComponent<Collider2D>().IsTouching(glassCollider)) {
 
             canDrag = false;

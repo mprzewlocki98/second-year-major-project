@@ -32,7 +32,10 @@ public class ButtonClick : MonoBehaviour {
                 waterArray[nextWaterComponent].SetActive(true);
                 nextWaterComponent++;
 
-                if(nextWaterComponent == waterArray.Length) { gameComplete = true; }
+                AudioSource sound = gameObject.GetComponent<AudioSource>();
+                sound.Play();
+
+                if (nextWaterComponent == waterArray.Length) { gameComplete = true; }
             }
         }
     }
