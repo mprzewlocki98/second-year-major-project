@@ -1269,6 +1269,7 @@ GameObject:
   - component: {fileID: 1281965278}
   - component: {fileID: 1281965280}
   - component: {fileID: 1281965281}
+  - component: {fileID: 1281965282}
   m_Layer: 0
   m_Name: wellDone
   m_TagString: Untagged
@@ -1356,6 +1357,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c99264cd40120941b604ccdd4e81176, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!111 &1281965282
+Animation:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1281965277}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: a5f40484e55e64386865e6ff449ada38, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: a5f40484e55e64386865e6ff449ada38, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &1300422292
 GameObject:
   m_ObjectHideFlags: 0
