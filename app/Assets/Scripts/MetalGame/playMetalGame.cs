@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 
 public class playMetalGame : MonoBehaviour {
-	float hintSecond = 1f;
-	float speed = 10f; //how fast it shakes
-	float amount = 2f;//how much it shakes
-	bool processEnd = true;
+	private float hintSecond = 1f;
+	private float speed = 10f; //how fast it shakes
+	private float amount = 2f;//how much it shakes
+	private bool processEnd = true;
 
     private bool easyMode = Difficulty.easyMode;
 
