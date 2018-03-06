@@ -6,7 +6,6 @@ public class GameControllerScript : MonoBehaviour {
 
 	public Transform lightPrefab;
 	public Text scoreDisplay;
-    SpriteRenderer sprender;
 
     private int playerScore = 0;
 	private float timeSinceLastSpawn = 0.0f;
@@ -18,11 +17,6 @@ public class GameControllerScript : MonoBehaviour {
 	void Start () {
         // this is during initialisation; the moment the game starts
 		lights = new List<Transform>();
-
-        // sprender refers to the Sprite Renderer (Well Done), which is the game object
-        // shown when the game is completed. it is first disabled 
-        sprender = gameObject.GetComponent<SpriteRenderer>();
-        sprender.enabled = false;
 
         // generate a light object and populate list
         for (int i = 0; i < LIGHTS_POOL; i++) {
@@ -57,10 +51,6 @@ public class GameControllerScript : MonoBehaviour {
 			}
 		}
 	}
-
-    public void SetSprender(bool x) {
-        sprender.enabled = x;
-    }
 
     public int  GetPlayerScore() {
         return playerScore;
