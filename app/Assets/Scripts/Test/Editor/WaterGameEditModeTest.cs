@@ -8,6 +8,15 @@ using UnityEditor.SceneManagement;
 
 public class WaterGameEditModeTest {
 
+    [Test] // Test to check for the game not to start in a completed state
+    public void GameDoesNotGoToWellDoneStraightAway() {
+        EditorSceneManager.OpenScene("Assets/Scenes/15-water-game", OpenSceneMode.Single);
+
+        ButtonClick script = GameObject.Find("wellDone").GetComponent<ButtonClick>();
+
+        Assert.IsFalse(script.GetGameComplete());
+    }
+
     [Test]
     public void AllObjectsPresent() { // to check that all the objects in the scene are there
         EditorSceneManager.OpenScene("Assets/Scenes/15-water-game", OpenSceneMode.Single);  
