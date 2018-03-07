@@ -31,7 +31,6 @@ public class CompleteLightGame : MonoBehaviour {
                 anim.Play("wellDone");
                 // stop the animation after once played
                 showIcon = false;
-                gc.stopGame();
             }
             // Invoke allows a certain waiting time
             Invoke("PlayerWon", 4);
