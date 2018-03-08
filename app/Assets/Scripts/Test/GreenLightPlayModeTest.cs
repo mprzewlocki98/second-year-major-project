@@ -23,8 +23,8 @@ public class GreenLightPlayModeTest {
     [Timeout(180000)] 
     // Sets the timeout of the test in milliseconds (if the test hangs, this will ensure 
     // it closes after 3 minutes).
-    public IEnumerator testLightPrefab()
-    {
+    public IEnumerator testLightPrefab() {
+
         // Remove the default skybox then creating a new game object
         RenderSettings.skybox = null;
         var root = new GameObject();
@@ -53,6 +53,26 @@ public class GreenLightPlayModeTest {
         // Destroy the temporary objects
         GameObject.Destroy(prefab);
         GameObject.Destroy(root);
+
+        yield return null;
+    }
+
+    [UnityTest]
+    // Test for player to go next scene once game has finished
+    public IEnumerator testClickButtonToNextScene() {
+
+        GameObject obj = GameObject.Find("GameController");
+        GameControllerScript gcs = obj.GetComponent<GameControllerScript>();
+
+        // adds 10 points immediately to end game
+        gcs.AddPoints(10);
+
+        // this is to allow the animation of well done to end
+        yield return new WaitForSeconds(5f);
+
+        // checks if the scene has changed
+        Scene currentScene = SceneManager.GetActiveScene();
+        Assert.AreEqual("4-cutscene", currentScene.name);  // the next scene is 4-cutscene
 
         yield return null;
     }

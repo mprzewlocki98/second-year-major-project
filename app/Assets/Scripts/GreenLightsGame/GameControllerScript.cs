@@ -36,11 +36,6 @@ public class GameControllerScript : MonoBehaviour {
             // lights will spawn if the time is ready to spawn
 			SpawnLights();
 		}
-        /*
-        if (lightPrefab.hasChanged) {
-            AddPoints(1);
-        }
-        */
     }
 
 	void SpawnLights() {
