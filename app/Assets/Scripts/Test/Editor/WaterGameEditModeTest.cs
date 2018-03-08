@@ -52,7 +52,7 @@ public class WaterGameEditModeTest {
 
     }
 
-    [Test]
+    [Test]  //Checks each object contains their scripts
     public void AllObjectsContainTheirScripts() {
 
         Assert.IsNotNull(button.GetComponent<OnMouseOverButton>());
@@ -62,7 +62,7 @@ public class WaterGameEditModeTest {
         Assert.IsNotNull(wellDone.GetComponent<GameComplete>());
     }
 
-    [Test]
+    [Test]  //Checks each object contain their sound files
     public void AllAudioSourcesArePresent() {
 
         Assert.IsNotNull(button.GetComponent<AudioSource>());

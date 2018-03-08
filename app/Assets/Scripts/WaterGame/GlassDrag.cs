@@ -59,4 +59,8 @@ public class GlassDrag : MonoBehaviour {
 
         return atPosition;
     }
+
+    public bool ReturnCanDrag() {
+        return canDrag;
+    }
 }
