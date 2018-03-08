@@ -6,6 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class WaterGamePlayModeTest {
 
+    [SetUp]
+    public void Init() {
+        SceneManager.LoadScene("15-water-game", LoadSceneMode.Single);
+    }
+
     [UnityTest]
     public IEnumerator TestTemplate() // a template for unit tests in play mode
     {

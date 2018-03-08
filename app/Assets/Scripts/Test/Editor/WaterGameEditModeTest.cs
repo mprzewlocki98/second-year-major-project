@@ -8,21 +8,13 @@ using UnityEditor.SceneManagement;
 
 public class WaterGameEditModeTest {
 
-    [Test] // Test to check for the game not to start in a completed state
-    public void GameDoesNotGoToWellDoneStraightAway() {
-        EditorSceneManager.OpenScene("Assets/Scenes/15-water-game", OpenSceneMode.Single);
-
-        ButtonClick script = GameObject.Find("wellDone").GetComponent<ButtonClick>();
-
-        Assert.IsFalse(script.GetGameComplete());
-    }
-
-    [Test]
-    public void AllObjectsPresent() { // to check that all the objects in the scene are there
-        EditorSceneManager.OpenScene("Assets/Scenes/15-water-game", OpenSceneMode.Single);  
-
-        GameObject glassCollider, water_dispenser, button, rectangle, glass, water1,
+    private GameObject glassCollider, water_dispenser, button, rectangle, glass, water1,
             water2, water3, water4, water5, water6, wellDone, water_B;
+    private GameObject[] gameobjArray;
+
+    [SetUp]
+    public void Init() {
+        EditorSceneManager.OpenScene("Assets/Scenes/15-water-game.unity", OpenSceneMode.Single);
 
         glassCollider = GameObject.Find("glassCollider");
         water_dispenser = GameObject.Find("water_dispenser");
@@ -38,19 +30,43 @@ public class WaterGameEditModeTest {
         wellDone = GameObject.Find("wellDone");
         water_B = GameObject.Find("water_B");
 
-        Assert.IsNotNull(glassCollider);
-        Assert.IsNotNull(water_dispenser);
-        Assert.IsNotNull(button);
-        Assert.IsNotNull(rectangle);
-        Assert.IsNotNull(glass);
-        Assert.IsNotNull(water1);
-        Assert.IsNotNull(water2);
-        Assert.IsNotNull(water3);
-        Assert.IsNotNull(water4);
-        Assert.IsNotNull(water5);
-        Assert.IsNotNull(water6);
-        Assert.IsNotNull(wellDone);
-        Assert.IsNotNull(water_B);
+        gameobjArray = new GameObject[] {glassCollider, water_dispenser, button, rectangle, glass, water1,
+            water2, water3, water4, water5, water6, wellDone, water_B};
+    }
+
+    [Test] // Test to check for the game not to start in a completed state
+    public void GameDoesNotGoToWellDoneStraightAway() {
+
+        ButtonClick script = GameObject.Find("wellDone").GetComponent<ButtonClick>();
+
+        Assert.IsFalse(script.GetGameComplete());
+    }
+
+    [Test]
+    public void AllObjectsPresent() { // to check that all the objects in the scene are there
+
+        foreach (GameObject gameobject in gameobjArray) {
+
+            Assert.IsNotNull(gameobject);
+        }
+
+    }
+
+    [Test]
+    public void AllObjectsContainTheirScripts() {
+
+        Assert.IsNotNull(button.GetComponent<OnMouseOverButton>());
+        Assert.IsNotNull(button.GetComponent<ButtonClick>());
+        Assert.IsNotNull(glass.GetComponent<GlassDrag>());
+        Assert.IsNotNull(wellDone.GetComponent<ButtonClick>());
+        Assert.IsNotNull(wellDone.GetComponent<GameComplete>());
+    }
+
+    [Test]
+    public void AllAudioSourcesArePresent() {
+
+        Assert.IsNotNull(button.GetComponent<AudioSource>());
+        Assert.IsNotNull(glass.GetComponent<AudioSource>());
     }
 
 }
