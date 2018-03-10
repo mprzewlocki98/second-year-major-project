@@ -12,8 +12,8 @@ public class CompleteMetalGame : MonoBehaviour {
 	}
 
 	void Update(){
-		successDelegate methodToUse = checkSuccess;
-		played = methodToUse.Invoke();
+//		successDelegate methodToUse = checkSuccess;
+		played = checkSuccess();
 
 		if (played){
 			if (showIcon) {
@@ -28,9 +28,9 @@ public class CompleteMetalGame : MonoBehaviour {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
-	delegate bool successDelegate();
+//	delegate bool successDelegate();
 
-	bool checkSuccess(){
+	public bool checkSuccess(){
 		GameObject[] objs = GameObject.FindGameObjectsWithTag ("item");
 
 		if (objs.Length == 0) {

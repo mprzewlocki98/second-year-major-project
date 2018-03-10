@@ -18,30 +18,32 @@ public class playMetalGame : MonoBehaviour {
 		
 	// Update is called once per frame
 	void Update () {
-		GameObject obj = GameObject.FindWithTag ("item");
+		if (Difficulty.easyMode) {
+			GameObject obj = GameObject.FindWithTag ("item");
 
-		if (obj != null && Time.time - hintSecond >= 5) {
+			if (obj != null && Time.time - hintSecond >= 8) {
 			
-			SpriteRenderer SR = obj.GetComponent<SpriteRenderer> ();
+				SpriteRenderer SR = obj.GetComponent<SpriteRenderer> ();
 
-			if (amount > 0) {
-				processEnd = false;
-				SR.color = new Color (SR.color.r, SR.color.g, SR.color.b, Mathf.Sin (Time.time * speed));
-				amount -= Time.deltaTime;
+				if (amount > 0) {
+					processEnd = false;
+					SR.color = new Color (SR.color.r, SR.color.g, SR.color.b, Mathf.Sin (Time.time * speed));
+					amount -= Time.deltaTime;
 
-			} else {
+				} else {
 
-				SR.color = new Color (SR.color.r, SR.color.g, SR.color.b, 1);
+					SR.color = new Color (SR.color.r, SR.color.g, SR.color.b, 1);
+					amount = 2f;
+					hintSecond = Time.time;
+					processEnd = true;
+				}	
+			}
+			
+			if (Input.mousePosition != mousePos && processEnd) {
 				amount = 2f;
 				hintSecond = Time.time;
-				processEnd = true;
-			}	
-		}
-			
-		if (Input.mousePosition != mousePos && processEnd) {
-			amount = 2f;
-			hintSecond = Time.time;
-			mousePos = Input.mousePosition;
+				mousePos = Input.mousePosition;
+			}
 		}
 	}
 }
