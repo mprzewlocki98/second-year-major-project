@@ -7,9 +7,22 @@ public class TracerMinigameScript : MonoBehaviour
 {
     public Text scoreDisplay;
     public Animation animation;
+    public Sprite glowing, notGlowing;
 
-    private int minigameScore = 0, spotsTapped = 0, max_spots = 5;
-    private bool easyMode = Difficulty.easyMode;
+    private GameObject[] spots;
+    private bool isGlowing;
+    private int minigameScore = 0, spotsTapped = 0, max_spots = 10;
+
+    public void Start()
+    {
+        spots = GameObject.FindGameObjectsWithTag("spot");
+
+        setSpotRadius();
+
+        isGlowing = false;
+        setGlowingState();
+        InvokeRepeating("setGlowingState", 1f, 1f);
+    }
 
     // Checking whether a gameObject was clicked 
     public void Update()
@@ -62,6 +75,52 @@ public class TracerMinigameScript : MonoBehaviour
         animation.Play("wellDone");
         Debug.Log("Game won! Final game score: " + minigameScore);
         StartCoroutine(Wait(3));
+    }
+
+    // sets the spots collider radius based on game difficulty
+    // a higher radius value means less accuracy is needed for a successful spot tap
+    private void setSpotRadius()
+    {
+        bool easyMode = Difficulty.easyMode;
+        float easyRadius = 0.6f, hardRadius = 0.4f;
+
+        foreach (GameObject spot in spots)
+        {
+            CircleCollider2D collider = spot.GetComponent<CircleCollider2D>();
+            if (easyMode) { collider.radius = easyRadius; }
+            else { collider.radius = hardRadius; }
+        }
+    }
+
+    // switch spot sprite between glowing and non-glowing
+    private void setGlowingState()
+    {
+        foreach (GameObject spot in spots)
+        {
+            SpriteRenderer sprite = spot.GetComponent<SpriteRenderer>();
+
+            // position and offset settings are a bugfix (glowing sprite incorrect defaults for them in unity)
+            Transform position = spot.GetComponent<Transform>();
+            Vector3 pos = new Vector3(0.35f, 2.55f, 0); 
+            Vector2 offs = new Vector2(0.35f, 2.25f); 
+            CircleCollider2D collider = spot.GetComponent<CircleCollider2D>();
+
+            if (isGlowing)
+            {
+                sprite.sprite = glowing;
+
+                position.position += pos;
+                collider.offset -= offs;
+            }
+            else
+            {
+                sprite.sprite = notGlowing;
+
+                position.position -= pos;
+                collider.offset += offs;
+            }
+        }
+        isGlowing = !isGlowing;
     }
 
     // wait then load scene; needed to show wellDone animation before proceeding

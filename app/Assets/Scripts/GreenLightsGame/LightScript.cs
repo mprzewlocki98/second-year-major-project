@@ -7,17 +7,16 @@ public class LightScript : MonoBehaviour {
     public Sprite greenLightImage;
     public AudioClip sound;
 
-    private GameControllerScript gcScript;
     private bool easyMode = Difficulty.easyMode;
 
     // lights will be by default, inactive and not green
     public bool isActive = false;
 	public bool isGreen = false;
+    public bool greenPopped = false;
 
 	// This will be for initialisation
 	void Start () {
 		ResetPosition();
-		gcScript = this.transform.parent.GetComponent<GameControllerScript>();
         gameObject.AddComponent<AudioSource>();
         Source.clip = sound;
         Source.playOnAwake = false;
@@ -90,7 +89,8 @@ public class LightScript : MonoBehaviour {
         Source.PlayOneShot(sound);
         Deactivate();
         if (isGreen) {
-            gcScript.AddPoints(1);
+            // this calls the game controller in the parent to add a point
+            this.transform.parent.GetComponentInParent<GameControllerScript>().AddPoints(1);
         } 
 	}
 }

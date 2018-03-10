@@ -7,9 +7,11 @@ public class GameComplete : MonoBehaviour {
 
     private GameObject button;
     private ButtonClick buttonScript;
+    private bool animationPlayed;
 	
 	void Start () {
-        
+
+        animationPlayed = false;
         button = GameObject.Find("button");
         buttonScript = button.GetComponent<ButtonClick>();
 	}
@@ -21,6 +23,11 @@ public class GameComplete : MonoBehaviour {
             SpriteRenderer SR = gameObject.GetComponent<SpriteRenderer>();
             SR.color = new Color(SR.color.r, SR.color.g, SR.color.b, 255f);
 
+            if (!animationPlayed) {
+
+                PlayAnimation();
+            }
+
             Invoke("NextScene", 3);
         }
 
@@ -28,5 +35,11 @@ public class GameComplete : MonoBehaviour {
 
     void NextScene() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    void PlayAnimation() {
+        Animation animation = gameObject.GetComponent<Animation>();
+        animation.Play("wellDone");
+        animationPlayed = true;
     }
 }
