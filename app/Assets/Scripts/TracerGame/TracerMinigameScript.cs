@@ -39,10 +39,7 @@ public class TracerMinigameScript : MonoBehaviour
                 // deactivate spot, so it can't be tapped again
                 hitInfo.transform.gameObject.active = false;
             }
-            else
-            {
-                SpotMissed();
-            }
+            
             UpdateScoreDisplay();
         }
     }
@@ -56,17 +53,6 @@ public class TracerMinigameScript : MonoBehaviour
         if (spotsTapped == max_spots)
         {
             GameWon();
-        }
-    }
-
-    // handles the situation if the user has tapped outside the targed areas
-    private void SpotMissed()
-    {
-        // tapping outside the target spots areas lossed the player a point
-        Debug.Log("Missed!");
-        if (minigameScore > 0)
-        {
-            minigameScore--;
         }
     }
 
@@ -124,7 +110,7 @@ public class TracerMinigameScript : MonoBehaviour
 
     public void UpdateScoreDisplay()
     {
-        scoreDisplay.text = "Score: " + minigameScore.ToString();
+        scoreDisplay.text = minigameScore.ToString() + " tapped!";
     }
 
 }
