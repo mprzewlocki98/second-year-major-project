@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class playMetalGame : MonoBehaviour {
+public class PlayMetalGame : MonoBehaviour {
 	private float hintSecond = 1f;
 	private float speed = 10f; //how fast it shakes
 	private float amount = 2f;//how much it shakes

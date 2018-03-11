@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class hintTextController : MonoBehaviour {
+public class HintTextController : MonoBehaviour {
 
 	// Use this for initialization
 	private Text hint;
@@ -24,14 +24,12 @@ public class hintTextController : MonoBehaviour {
 			if (process == 1) {
 				int temp = numberOfItemLeft ();
 				if (temp != numberOfItem) {
-//					float amountTime = 1;
 					if (temp > 1) {
 						hint.text = temp + " items left!";
 					} else {
 						hint.text = temp + " item left!";
 					}
-//					hint.color = new Color (hint.color.r, hint.color.g, hint.color.b, amountTime);
-//					amountTime -= Time.deltaTime* 100f;
+
 					numberOfItem = temp;
 				}
 				if (temp == 0) {
