@@ -1,9 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class SceneController : MonoBehaviour {
+public class SceneController : MonoBehaviour
+{
 
     //config
     public int config_textScrollSpeed;
@@ -15,35 +15,40 @@ public class SceneController : MonoBehaviour {
 
     //external variables
     public int nextSceneID;
-    public Sprite background;
-    public Sprite[] actors;
+    public GameObject[] actors;
 
     //internal variables
     private int click_counter = 0; //counts how far through cutscene the player is)
     private Action[] cutscene;
 
-    private bool actorLerp = false;
-
     private bool textScrolling = false;
-    private string totaltext;    
+    private string totaltext;
     private int scrollindex;
     private int tcounter = 0;
 
-    
+    public int timeout = 0;
+    public int clickdelay = 0;
 
-    void Start () {
+
+
+    void Start()
+    {
         Action.sc = this;
+        Cutscenes.actors = actors;
         Response.ui_name = ui_name;
         Response.ui_portrait = ui_portrait;
 
         cutscene = Cutscenes.getScene(nextSceneID);
 
         cutscene[0].Act();
-     }
+    }
 
-    void Update () {
-        
-        if (textScrolling)            
+    void Update()
+    {
+        if (timeout > 0) { timeout--; }
+        if (clickdelay > -1) { clickdelay--; } 
+        if (clickdelay == 0) { OnMouseDown(); }
+        if (textScrolling)
         {
             tcounter++;
             if (tcounter > config_textScrollSpeed)
@@ -61,11 +66,12 @@ public class SceneController : MonoBehaviour {
                 }
             }
         }
-	}
+    }
 
-    void OnMouseDown()
+
+    public void OnMouseDown()
     {
-        if (textScrolling == false && actorLerp == false)
+        if (textScrolling == false && timeout <= 0)
         {
             click_counter++;
             if (click_counter < cutscene.Length)
@@ -74,20 +80,12 @@ public class SceneController : MonoBehaviour {
             }
             else
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                Application.LoadLevel(nextSceneID);
             }
         }
         else
         {
-            if(textScrolling == true)
-            {
-                //stop scrolling, instantly show
-            }
-
-            if(actorLerp == true)
-            {
-                //stop lerp, instant move
-            }
+            
         }
     }
 
@@ -97,26 +95,26 @@ public class SceneController : MonoBehaviour {
         totaltext = t;
         scrollindex = 0;
     }
-    
+
+
 }
 
 abstract class Action
 {
     public static SceneController sc;
-    public abstract void Act(); //start an action
-    public abstract void Force(); //skip to the end of an action
-
+    public abstract void Act(); //start an action   
 }
 
+//reads text out of textbox
 class Response : Action
 {
     public static UnityEngine.UI.Text ui_name;
     public static UnityEngine.UI.Image ui_portrait;
 
-    private string name;        
-    private Sprite portrait;     
-    private string content;    
-    
+    private string name;
+    private Sprite portrait;
+    private string content;
+
     public Response(string name, Sprite portrait, string content)
     {
         this.name = name;
@@ -131,71 +129,177 @@ class Response : Action
         sc.InitiateTextScrolling(content);
     }
 
-    override public void Force() //skip text scroll and set text
-    {   
-        
+}
+
+//activates a unity animation as configured in the animationcontroller associated with the attatched gameobject
+class Move : Action
+{
+    Animator a;
+    int t;
+    public Move(Animator a, int trigger)
+    {
+        this.a = a;
+        t = trigger;
+    }
+
+    override public void Act()
+    {
+        a.SetInteger("State", t);
     }
 }
 
-static class Cutscenes
+//prevents any action for n frames
+class Wait : Action
 {
+    int frames;
+    public Wait(int frames)
+    {
+        this.frames = frames;
+    }
+
+    override public void Act()
+    {
+        sc.timeout = frames;
+    }
+}
+
+//simulates a click after n frames
+class DelayClick : Action
+{
+    int frames;
+    public DelayClick(int frames)
+    {
+        this.frames = frames;
+    }
+
+    override public void Act()
+    {
+        sc.clickdelay = frames;
+    }
+}
+
+//activates a gameobject
+class Activate : Action
+{
+    GameObject g;
+    public Activate(GameObject g)
+    {
+        this.g = g;
+    }
+
+    override public void Act()
+    {
+        g.SetActive(true);
+    }         
+
+}
+
+//plays a sound
+class PlaySound : Action
+{
+    
+    public PlaySound()
+    {
+       
+    }
+
+    override public void Act()
+    {
+        
+    }
+    
+}
+
+//allows many animations and changing text simultaneously
+class Multi : Action
+{
+    Action[] actions;
+    public Multi(Action[] actions)
+    {
+        this.actions = actions;
+    }
+
+    override public void Act()
+    {
+        foreach (Action a in actions)
+        {
+            a.Act();
+        }
+    }
+}
+
+
+
+    static class Cutscenes
+{
+    public static GameObject[] actors;
     public static Action[] getScene(int i)
     {
         switch (i)
         {
-            case 1: return new Action[] {
-            new Response("Parent",null,"Hello, we are here for my child's scan."),
-            new Response("Receptionist",null,"Please take a seat, someone will be with you shortly!"),
-            new Response("Kid",null,"Tee hee hee!"),
-            new Response("Nurse",null,"Hello, I am the nurse. Please follow the green lights to the scanning department!"),
+            case 3:
+                Animator mom = actors[0].GetComponent<Animator>();
+                Animator child = actors[1].GetComponent<Animator>();
+                Animator consult = actors[2].GetComponent<Animator>();
+                Animator radiog = actors[3].GetComponent<Animator>();
+
+                return new Action[] {
+            new Multi(new Action[] {new Move(mom,1),new Move(child,1), new Response("Parent",null,"Hello, we are here for my child's scan.") }),
+            new Multi(new Action[] {new Response("Child",null,"Hello!"),new Move(child,2) }),
+            new Multi(new Action[] {new Response("Consultant",null,"Welcome to the nuclear medicine department." ),new Move(consult,1) }),
+            new Multi(new Action[] {new Response("Consultant",null,"Please take a seat, someone will be with you shortly."),new Move(consult,2) }),
+            new Multi(new Action[] {new Response("Parent",null,"Okay"),new Move(child,3),new Move(mom,2) }),
+            new Multi(new Action[] {new Activate(actors[4]),new Wait(120),new DelayClick(121) }),
+            new Multi(new Action[] {new Move(radiog,1), new Response("Radiographer",null,"Hello, I am one of the Radiographers who will be helping you today") }),
+            new Multi(new Action[] {new Move(radiog,2),new Response("Radiographer",null,"Please follow the green lights to the scanning department.") }),
+            new Activate(actors[5])
         };
 
-            case 2: return new Action[] {
-            new Response("Nurse",null,"This is your doctor, he will be conducting your scan."),
-            new Response("Doctor",null,"Hello, I'm the doctor."),
-            new Response("Parent",null,"Hello, nice to meet you."),
-            new Response("Nurse",null,"First we will start by removing any metal items from you, because metal interferes with the scan."),
-            new Response("Nurse",null,"Don't worry. You will get them back later!"),
-            new Response("Nurse",null,"Doctor, why don't you help them out?"),
+            case 5: return new Action[] {
+            new Response("Radiographer",null,"Here we are in the injection room"),
+            new Response("Radiographer",null,"This is the superintendant radiographer, he will be overseeing your scan."),
+            new Response("Superintendant",null,"Hello"),
+            new Response("Parent",null,"Hi, nice to meet you."),
+            new Response("Superintendant",null,"First we will start by removing any metal items from you, because metal interferes with the scan."),
+            new Response("Radiographer",null,"Don't worry. You will get them back later!"),
 };
-		   case 3: return new Action[] {
-				new Response("Nurse",null,"Well done!"),
-				new Response("Nurse",null,"Now it is time for your injection, please come to the injection room!"),
-				new Response("Nurse",null,"We will put some cream on your shoulder and then we will give you the injection."),
-                new Response("Parent",null,"Will it hurt at all?"),
-                new Response("Kid",null,"Waah, I hate pain!"),
-                new Response("Nurse",null,"Not at all! That is what the cream is for."),
-                new Response("Nurse",null,"Now let's get started."),
+		   case 7: return new Action[] {
+				new Response("Superintendant",null,"Well done!"),				
+                new Response("Superintendant",null,"This is my assistant, who will be conducting the injection"),
+                new Response("Assistant",null,"We will put some cream on your shoulder and then we will give you the injection."),
+                new Response("Child",null,"I-I'm scared..."),
+                new Response("Parent",null,"Will it hurt at all doctor?"),                
+                new Response("Assistant",null,"Not at all! That is what the cream is for."),
+                new Response("Superintendant",null,"Now let's get started."),
             };
 
-			case 4: return new Action[] {
-				new Response("Nurse",null,"Good job!"),
-				new Response("Kid",null,"That tickles!"),
-				new Response("Nurse",null,"Now we'll wait a bit for the injection to take effect."),
-				new Response("Nurse",null,"The tracer in the injection will go to cells in your body."),
-                new Response("Nurse",null,"Help the tracer on its way to the cells!"),
+			case 9: return new Action[] {
+				new Response("Assistant",null,"Good job! You were very brave."),
+				new Response("Child",null,"That tickled!"),
+                new Response("Parent",null,"So what does the injection do?"),
+                new Response("Assistant",null,"We injected a tracer which will lets the scanning machine look inside their body"),                 
+                new Response("Superintendant",null,"But first we will have to wait because the tracer must go around the body for a while"),			
+               
             };
 
-            case 5:
+            case 11:
+                return new Action[] {                
+                new Response("Child",null,"Is it nearly time for the scan yet?"),
+                new Response("Superintendant",null,"Yes, but first why don't you choose a movie you want to watch."),
+                new Response("Assistant",null,"The scan takes a long time so you get to watch something"),
+                new Response("Child",null,"Yay!"),
+                new Response("Superintendant",null,"Try to stay still while you watch it so we can get an accurate scan"),
+                new Response("Assistant",null,"So which movie would you like to watch?"),
+            };
+
+            case 13:
                 return new Action[] {
-                new Response("Nurse",null,"Well done, you did it!"),
-                new Response("Kid",null,"Is it very nearly time for the scan yet?"),
-                new Response("Nurse",null,"Yes, but first why don't you choose a movie you want to watch before the scan?"),
-                new Response("Nurse",null,"The scan will take some time and you will have to lie still."),
-                new Response("Nurse",null,"But don't worry, you can watch a movie while the scan is happening!"),
-                new Response("Parent",null,"Can I go in with my child?"),
-                new Response("Nurse",null,"Yes, you can be with your child at all times."),
-            };
-
-            case 6:
-                return new Action[] {
-                new Response("Nurse",null,"Now it's time for the scan!"),
+                new Response("Assistant",null,"Now it's time for the scan!"),
                 new Response("Kid",null,"I don't know if I want to..."),
-                new Response("Parent",null,"It's OK, I will be here with you."),
-                new Response("Nurse",null,"See if you can help us scan!"),
+                new Response("Parent",null,"It's OK, I will be here with you."),                
             };
 
-            case 7:
+            case 15:
                 return new Action[] {
                 new Response("Kid",null,"Yay, the scan is over!"),
                 new Response("Nurse",null,"Well done! You are a very brave patient!"),
@@ -205,7 +309,7 @@ static class Cutscenes
                 new Response("Nurse",null,"Drink as much water as you can to go to the toilet faster!"),
             };
 
-            case 8:
+            case 17:
                 return new Action[] {
                 new Response("Nurse",null,"Good job!"),
                 new Response("Parent",null,"Is there anything else we need to do now?"),
