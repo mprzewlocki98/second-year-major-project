@@ -31,6 +31,8 @@ public class MetalGameEditModeTest {
 
 
 	[Test]
+	// Test all components are in the scene
+
 	public void testAllComponentsPresent(){
 		Assert.IsNotNull (child);
 		Assert.IsNotNull (whistle);
@@ -44,6 +46,7 @@ public class MetalGameEditModeTest {
 	}
 
 	[Test]
+	// Test all components at the initial position
 
 	public void testComponentsInitPosition(){
 		// items are placed mannually, so the position is not that accuate
@@ -74,6 +77,7 @@ public class MetalGameEditModeTest {
 
 
 	[Test]
+	// Test some gameobjects have their scripts
 
 	public void testGameObjectContainsScripts(){
 		Assert.IsNotNull(child.GetComponent<PlayMetalGame> ());

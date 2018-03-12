@@ -5,11 +5,11 @@ using UnityEngine.UI;
 
 public class HintTextController : MonoBehaviour {
 
-	// Use this for initialization
 	private Text hint;
-	private int process = 0;
+	private int process = 0;	// 0 is inital state, 1 is playing state, 2 is complete state
 	private int numberOfItem = 6;
 
+	// Use this for initialization
 	void Start () {
 		hint = this.gameObject.GetComponent<Text>();
 		hint.text = "Remove the metal items!";	
@@ -33,31 +33,38 @@ public class HintTextController : MonoBehaviour {
 					numberOfItem = temp;
 				}
 				if (temp == 0) {
-					process = 3;
+					process = 2;
 				}
 			}
 		} else {
 			if (process == 1) {
-				Invoke ("cleanText", 3);
-				process = 3;
+				
+				if (Difficulty.easyMode) {
+					Invoke ("cleanText", 4);
+				}
+
+				process = 2;
 			}
 		}
 
-		if (GameObject.Find ("wellDone").GetComponent<CompleteMetalGame> ().checkSuccess()) {
-			process = 3;
-			hint.text = "Congratulation !!!";
+		if (CompleteMetalGame.checkSuccess()) {
+			process = 2;
+			hint.text = "Congratulations !!!";
 		}
 	}
 
-	void cleanText(){
+	// clean the hint text
+	private void cleanText(){
 		hint.text = "";
 	}
 
-	void initText(){
+	// process from 0 to 1
+	private void initText(){
 		process = 1;
 	}
 
-	int numberOfItemLeft(){
+	// to check how many items left
+	private int numberOfItemLeft(){
 		return GameObject.FindGameObjectsWithTag ("item").Length;
 	}
 }

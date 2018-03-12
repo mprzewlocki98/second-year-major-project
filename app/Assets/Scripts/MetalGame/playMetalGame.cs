@@ -1,14 +1,15 @@
 ﻿using UnityEngine;
 
 public class PlayMetalGame : MonoBehaviour {
+	
 	private float hintSecond = 1f;
-	private float speed = 10f; //how fast it shakes
-	private float amount = 2f;//how much it shakes
+	private float speed = 10f;	//how fast item shakes
+	private float amount = 2f;	//how many times item shakes
 	private bool processEnd = true;
+	private Vector3 mousePos;
 
     private bool easyMode = Difficulty.easyMode;
 
-    Vector3 mousePos;
 
 	// Use this for initialization
 	void Start () {
@@ -19,6 +20,7 @@ public class PlayMetalGame : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Difficulty.easyMode) {
+			
 			GameObject obj = GameObject.FindWithTag ("item");
 
 			if (obj != null && Time.time - hintSecond >= 8) {

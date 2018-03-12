@@ -18,7 +18,8 @@ public class MetalGamePlayModeTest {
 
 
 	[UnityTest]
-	// Test for load the scene 
+	// Test for loading the current scene 
+
 	public IEnumerator testLoadScene(){
 		Scene currentScene = SceneManager.GetActiveScene ();
 		Assert.AreEqual ("5-metal-game",currentScene.name);
@@ -27,6 +28,7 @@ public class MetalGamePlayModeTest {
 
 	[UnityTest]
 	// Test for remove all items with click sound
+
 	public IEnumerator testRemoveAllItems()
 	{
 		items = GameObject.FindGameObjectsWithTag("item");
@@ -42,14 +44,8 @@ public class MetalGamePlayModeTest {
 		};
 
 		GameObject.Find("wellDone").GetComponent<AudioSource> ().volume = 0;	// mute the audioSouce
-		yield return new WaitForSeconds (1f);
 
-//      AssertionException:   Expected: null But was:  <null>
-//		Assert.IsNull (brooch);
-//		Assert.IsNull (watch);
-//		Assert.IsNull (whistle);
-//		Assert.IsNull (keyHolder);
-//		Assert.IsNull (belt);
+		yield return new WaitForSeconds (1f);
 
 		Assert.IsTrue (brooch.Equals(null));
 		Assert.IsTrue (watch.Equals(null));
@@ -62,6 +58,7 @@ public class MetalGamePlayModeTest {
 
 	[UnityTest]
 	// Test for play WellDone animation & audio, and check if game is success when all items are removed
+
 	public IEnumerator testPlayWellDone(){
 		items = GameObject.FindGameObjectsWithTag("item");
 		wellDone = GameObject.Find("wellDone");
@@ -71,7 +68,7 @@ public class MetalGamePlayModeTest {
 			obj.GetComponent<DragItem> ().Invoke("OnMouseUp",0);
 		};
 		yield return new WaitForSeconds (1.5f);
-		Assert.IsTrue(wellDone.GetComponent<CompleteMetalGame> ().checkSuccess ());
+		Assert.IsTrue(CompleteMetalGame.checkSuccess ());
 		Assert.IsTrue(wellDone.GetComponent<Animation> ().IsPlaying("wellDone"));
 		Assert.IsTrue(wellDone.GetComponent<AudioSource> ().isPlaying);
 		yield return null;
@@ -81,6 +78,7 @@ public class MetalGamePlayModeTest {
 
 	[UnityTest]
 	//Test for complete the game and move to next scene
+
 	public IEnumerator testCompleteGameToNextScene(){
 		GameObject.Find("wellDone").GetComponent<CompleteMetalGame> ().Invoke("nextScene",0);
 		yield return null;
