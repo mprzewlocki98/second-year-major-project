@@ -29,4 +29,29 @@ public class WaterGamePlayModeTest {
         Assert.IsTrue(gd.ReturnCanDrag());
         yield return null;
     }
+
+    //Object reference not set to an instance of an object - Error
+    /*[UnityTest]
+    public IEnumerator WaterObjectsAreNotVisibleAtTheBeginning() {
+
+        GameObject water1 = GameObject.Find("water1");
+        GameObject water2 = GameObject.Find("water2");
+        GameObject water3 = GameObject.Find("water3");
+        GameObject water4 = GameObject.Find("water4");
+        GameObject water5 = GameObject.Find("water5");
+        GameObject water6 = GameObject.Find("water6");
+
+        Assert.IsFalse(water1.activeInHierarchy);
+        yield return null;
+        Assert.IsFalse(water2.activeInHierarchy);
+        yield return null;
+        Assert.IsFalse(water3.activeInHierarchy);
+        yield return null;
+        Assert.IsFalse(water4.activeInHierarchy);
+        yield return null;
+        Assert.IsFalse(water5.activeInHierarchy);
+        yield return null;
+        Assert.IsFalse(water6.activeInHierarchy);
+        yield return null;
+    }*/
 }
