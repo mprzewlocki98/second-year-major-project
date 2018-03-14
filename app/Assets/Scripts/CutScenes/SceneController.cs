@@ -182,14 +182,16 @@ class DelayClick : Action
 class Activate : Action
 {
     GameObject g;
-    public Activate(GameObject g)
+    bool tf;
+    public Activate(GameObject g, bool tf)
     {
         this.g = g;
+        this.tf = tf;
     }
 
     override public void Act()
     {
-        g.SetActive(true);
+        g.SetActive(tf);
     }         
 
 }
@@ -249,37 +251,57 @@ class Multi : Action
             new Multi(new Action[] {new Response("Consultant",null,"Welcome to the nuclear medicine department." ),new Move(consult,1) }),
             new Multi(new Action[] {new Response("Consultant",null,"Please take a seat, someone will be with you shortly."),new Move(consult,2) }),
             new Multi(new Action[] {new Response("Parent",null,"Okay"),new Move(child,3),new Move(mom,2) }),
-            new Multi(new Action[] {new Activate(actors[4]),new Wait(120),new DelayClick(121) }),
+            new Multi(new Action[] {new Activate(actors[4],true),new Wait(120),new DelayClick(121) }),
             new Multi(new Action[] {new Move(radiog,1), new Response("Radiographer",null,"Hello, I am one of the Radiographers who will be helping you today") }),
             new Multi(new Action[] {new Move(radiog,2),new Response("Radiographer",null,"Please follow the green lights to the scanning department.") }),
-            new Activate(actors[5])
+            new Multi(new Action[] {new Activate(actors[5],true),new DelayClick(121) })
         };
+                
+            case 5:
+                Animator s2_mum = actors[0].GetComponent<Animator>();
+                Animator s2_child = actors[1].GetComponent<Animator>();
+                Animator s2_super = actors[2].GetComponent<Animator>();
+                Animator s2_radiog = actors[3].GetComponent<Animator>();
 
-            case 5: return new Action[] {
+                return new Action[] {
             new Response("Radiographer",null,"Here we are in the injection room"),
-            new Response("Radiographer",null,"This is the superintendant radiographer, he will be overseeing your scan."),
-            new Response("Superintendant",null,"Hello"),
-            new Response("Parent",null,"Hi, nice to meet you."),
-            new Response("Superintendant",null,"First we will start by removing any metal items from you, because metal interferes with the scan."),
-            new Response("Radiographer",null,"Don't worry. You will get them back later!"),
+            new Multi(new Action[] {new Response("Radiographer",null,"This is the superintendant radiographer, he will be overseeing your scan."),new Move(s2_radiog,1) }),
+            new Multi(new Action[] {new Response("Superintendant",null,"Hello."), new Move(s2_super,1) }),
+            new Multi(new Action[] {new Response("Parent",null,"Hi, nice to meet you."),new Move(s2_mum,1) }),
+            new Multi(new Action[] {new Response("Superintendant",null,"First we will start by removing any metal items from you, because metal interferes with the scan."),new Move(s2_super,2) }),
+            new Multi(new Action[] {new Response("Radiographer",null,"Don't worry. You will get them back later!"),new Move(s2_radiog,2) }),
+            new Multi(new Action[] {new Response("Superintendant",null,"Lets begin."),new DelayClick(121) })
+
 };
-		   case 7: return new Action[] {
-				new Response("Superintendant",null,"Well done!"),				
-                new Response("Superintendant",null,"This is my assistant, who will be conducting the injection"),
-                new Response("Assistant",null,"We will put some cream on your shoulder and then we will give you the injection."),
-                new Response("Child",null,"I-I'm scared..."),
-                new Response("Parent",null,"Will it hurt at all doctor?"),                
-                new Response("Assistant",null,"Not at all! That is what the cream is for."),
-                new Response("Superintendant",null,"Now let's get started."),
+		   case 7:
+                Animator s3_mum = actors[0].GetComponent<Animator>();
+                Animator s3_child = actors[1].GetComponent<Animator>();
+                Animator s3_super = actors[2].GetComponent<Animator>();
+                Animator s3_assist = actors[3].GetComponent<Animator>();
+
+                return new Action[] {
+                new Response("Superintendant",null,"Excellent, now that we have removed metal objects we can proceed."),
+                new Multi(new Action[] {new Response("Superintendant",null,"This is my assistant, who will be conducting the injection."),new Move(s3_super,1) }),
+                new Multi(new Action[] {new Response("Assistant",null,"We will put some cream on your shoulder and then we will give you the injection."),new Move(s3_assist,1) }),
+                new Multi(new Action[] {new Response("Child",null,"I-I'm scared..."),new Move(s3_child, 1) }),
+                new Multi(new Action[] {new Response("Parent",null,"Will it hurt at all doctor?"),  new Move(s3_mum, 1) }),
+                new Multi(new Action[] {new Response("Assistant",null,"Not at all! That is what the cream is for."),new Move(s3_assist,2) }),
+                new Multi(new Action[] {new Response("Superintendant",null,"Now let's get started."),new Move(s3_super,2) })
             };
 
-			case 9: return new Action[] {
-				new Response("Assistant",null,"Good job! You were very brave."),
-				new Response("Child",null,"That tickled!"),
-                new Response("Parent",null,"So what does the injection do?"),
-                new Response("Assistant",null,"We injected a tracer which will lets the scanning machine look inside their body"),                 
-                new Response("Superintendant",null,"But first we will have to wait because the tracer must go around the body for a while"),			
-               
+			case 9:
+                Animator s4_mum = actors[0].GetComponent<Animator>();
+                Animator s4_child = actors[1].GetComponent<Animator>();
+                Animator s4_super = actors[2].GetComponent<Animator>();
+                Animator s4_assist = actors[3].GetComponent<Animator>();
+                Animator s4_cam= actors[4].GetComponent<Animator>();
+                return new Action[] {                
+                new Response("Assistant",null,"Well done! You were very brave."),
+                new Multi(new Action[] {new Response("Child",null,"That tickled!"),new Move(s4_child,1) }),
+                new Multi(new Action[] {new Response("Parent",null,"So what does the injection do?"),new Move(s4_mum,1) }),
+                new Multi(new Action[] {new Response("Assistant",null,"We injected a tracer which will let the scanning machine look inside their body"),new Move(s4_assist,1) }),
+                new Multi(new Action[] {new Response("Superintendant",null,"But first we will have to wait because the tracer must go around the body for a while"),new Move(s4_super,1) }),
+                new Multi(new Action[] {new Move(s4_cam,1),new DelayClick(141) })
             };
 
             case 11:
