@@ -110,8 +110,11 @@ public class DrawCanvas : MonoBehaviour {
             SpriteRenderer SR = wellDone.GetComponent<SpriteRenderer>();
             SR.color = new Color(SR.color.r, SR.color.g, SR.color.b, 255f);
 
-            if(!animationPlayed)
-            {
+            Transform wellDoneT = wellDone.GetComponent<Transform>();
+
+            //wellDoneT.localScale = new Vector3(1f, 1f, 1f); -Hard coding doesnt fix bug
+
+            if(!animationPlayed) {
                 PlayAnimation();
             }
 
