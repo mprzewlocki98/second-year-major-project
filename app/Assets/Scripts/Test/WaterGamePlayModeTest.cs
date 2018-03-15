@@ -55,7 +55,7 @@ public class WaterGamePlayModeTest {
         yield return null;
     }
 
-    [UnityTest]
+    [UnityTest] //Check All GameObjects that should be in the scene are
     public IEnumerator AllGameObjectsBesidesWaterObjectsAreInScene() {
 
         GameObject glassCollider = GameObject.Find("glassCollider");

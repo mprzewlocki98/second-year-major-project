@@ -12,7 +12,7 @@ public class WaterGameEditModeTest {
             water2, water3, water4, water5, water6, wellDone, water_B;
     private GameObject[] gameobjArray;
 
-    [SetUp]
+    [SetUp] //Initialises all objects and the scene for rest of the tests
     public void Init() {
         EditorSceneManager.OpenScene("Assets/Scenes/15-water-game.unity", OpenSceneMode.Single);
 

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DrawCanvas : MonoBehaviour {
 
@@ -9,9 +10,9 @@ public class DrawCanvas : MonoBehaviour {
     private Texture2D newTex;
     public Texture2D oldTex;
     public UnityEngine.UI.Text textPercent;
-    public UnityEngine.UI.Image buttonContinue;
 
     private bool easyMode = Difficulty.easyMode;
+    private bool animationPlayed;
 
     public int scanned = 0;
 
@@ -24,6 +25,7 @@ public class DrawCanvas : MonoBehaviour {
         newTex = new Texture2D(oldTex.width,oldTex.height);       
         Color[] colors = oldTex.GetPixels(0, 0, oldTex.width, oldTex.height);
         newTex.SetPixels(colors);
+        animationPlayed = false;
     }
 
 
@@ -103,9 +105,30 @@ public class DrawCanvas : MonoBehaviour {
         else
         {
             textPercent.text = "Scan Complete!";
-            buttonContinue.gameObject.SetActive(true);
-            GetComponent<SpriteRenderer>().gameObject.SetActive(false);
+
+            GameObject wellDone = GameObject.Find("wellDone");
+            SpriteRenderer SR = wellDone.GetComponent<SpriteRenderer>();
+            SR.color = new Color(SR.color.r, SR.color.g, SR.color.b, 255f);
+
+            if(!animationPlayed)
+            {
+                PlayAnimation();
+            }
+
+            Invoke("NextScene", 3);
         }
         
+    }
+
+    void PlayAnimation()
+    {
+        Animation animation = GameObject.Find("wellDone").GetComponent<Animation>();
+        animation.Play("wellDone");
+        animationPlayed = true;
+    }
+
+    void NextScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
