@@ -30,8 +30,8 @@ public class WaterGamePlayModeTest {
         yield return null;
     }
 
-    //Object reference not set to an instance of an object - Error
-    /*[UnityTest]
+    [UnityTest] //Check to see whether all water objects are not find-able
+                //and therefore not in the scene
     public IEnumerator WaterObjectsAreNotVisibleAtTheBeginning() {
 
         GameObject water1 = GameObject.Find("water1");
@@ -41,17 +41,44 @@ public class WaterGamePlayModeTest {
         GameObject water5 = GameObject.Find("water5");
         GameObject water6 = GameObject.Find("water6");
 
-        Assert.IsFalse(water1.activeInHierarchy);
+        Assert.IsNull(water1);
         yield return null;
-        Assert.IsFalse(water2.activeInHierarchy);
+        Assert.IsNull(water2);
         yield return null;
-        Assert.IsFalse(water3.activeInHierarchy);
+        Assert.IsNull(water3);
         yield return null;
-        Assert.IsFalse(water4.activeInHierarchy);
+        Assert.IsNull(water4);
         yield return null;
-        Assert.IsFalse(water5.activeInHierarchy);
+        Assert.IsNull(water5);
         yield return null;
-        Assert.IsFalse(water6.activeInHierarchy);
+        Assert.IsNull(water6);
         yield return null;
-    }*/
+    }
+
+    [UnityTest]
+    public IEnumerator AllGameObjectsBesidesWaterObjectsAreInScene() {
+
+        GameObject glassCollider = GameObject.Find("glassCollider");
+        GameObject waterDispenser = GameObject.Find("water_dispenser");
+        GameObject button = GameObject.Find("button");
+        GameObject rectangle = GameObject.Find("rectangle");
+        GameObject glass = GameObject.Find("glass");
+        GameObject wellDone = GameObject.Find("wellDone");
+        GameObject waterBackground = GameObject.Find("water_B");
+
+        Assert.IsNotNull(glassCollider);
+        yield return null;
+        Assert.IsNotNull(waterDispenser);
+        yield return null;
+        Assert.IsNotNull(button);
+        yield return null;
+        Assert.IsNotNull(rectangle);
+        yield return null;
+        Assert.IsNotNull(glass);
+        yield return null;
+        Assert.IsNotNull(wellDone);
+        yield return null;
+        Assert.IsNotNull(waterBackground);
+        yield return null;
+    }
 }
