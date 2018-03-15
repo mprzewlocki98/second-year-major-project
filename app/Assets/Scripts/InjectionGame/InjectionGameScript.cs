@@ -57,7 +57,6 @@ public class InjectionGameScript : MonoBehaviour {
     public void ShowArrow() {
         GameObject[] arrows = { arrow1, arrow2, arrow3, arrow4, null };
         GameObject arrow = arrows[(int)currentState];
-        Debug.Log((int)currentState);
 
         if(arrow == null) {
             HideArrowsExcept(null);
