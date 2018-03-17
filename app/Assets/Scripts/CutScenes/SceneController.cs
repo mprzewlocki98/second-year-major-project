@@ -118,14 +118,14 @@ class Response : Action
     public Response(string name, Sprite portrait, string content)
     {
         this.name = name;
-        this.portrait = portrait;
+        //this.portrait = portrait;
         this.content = content;
     }
 
     override public void Act() //start text scrolling
     {
         ui_name.text = name;
-        ui_portrait.sprite = portrait;
+        //ui_portrait.sprite = portrait;
         sc.InitiateTextScrolling(content);
     }
 
@@ -305,43 +305,64 @@ class Multi : Action
             };
 
             case 11:
+                Animator s5_mum = actors[0].GetComponent<Animator>();
+                Animator s5_child = actors[1].GetComponent<Animator>();
+                Animator s5_super = actors[2].GetComponent<Animator>();
+                Animator s5_assist = actors[3].GetComponent<Animator>();
+                Animator s5_radog = actors[4].GetComponent<Animator>();
                 return new Action[] {                
-                new Response("Child",null,"Is it nearly time for the scan yet?"),
-                new Response("Superintendant",null,"Yes, but first why don't you choose a movie you want to watch."),
-                new Response("Assistant",null,"The scan takes a long time so you get to watch something"),
-                new Response("Child",null,"Yay!"),
-                new Response("Superintendant",null,"Try to stay still while you watch it so we can get an accurate scan"),
-                new Response("Assistant",null,"So which movie would you like to watch?"),
+                new Response("Superintendant",null,"Here we are in the scan room."),
+                new Multi(new Action[] { new Response("Radiographer",null,"Hello again."),new Move(s5_radog,1) }),
+                new Multi(new Action[] {new Response("Assistant",null,"This is the machine that will be used for the scan."),new Move(s5_assist,1) }),
+                new Multi(new Action[] {new Response("Child",null,"Wow, it's big!"),new Move(s5_child,1) }),
+                new Multi(new Action[] {new Response("Assistant",null,"The scan takes a long time so you get to watch a movie or cartoons."),new Move(s5_assist,2) }),
+                new Multi(new Action[] {new Response("Child",null,"Yay!"),new Move(s5_child,2) }),
+                new Multi(new Action[] {new Response("Superintendant",null,"Try to stay still while you watch it so we can get an accurate scan"),new Move(s5_super,1) }),
+                new Multi(new Action[] {new Response("Assistant",null,"So which movie would you like to watch?"),new Move(s5_assist,313) }),
             };
 
-            case 13:
+            case 14:
+                Animator s6_mum = actors[0].GetComponent<Animator>();
+                Animator s6_child = actors[1].GetComponent<Animator>();
+                Animator s6_radog = actors[2].GetComponent<Animator>();
+                Animator s6_childlaying = actors[3].GetComponent<Animator>();
+
                 return new Action[] {
-                new Response("Assistant",null,"Now it's time for the scan!"),
-                new Response("Kid",null,"I don't know if I want to..."),
-                new Response("Parent",null,"It's OK, I will be here with you."),                
+                new Response("Assistant",null,"The scan is over. Well done!"),
+                new Multi(new Action[] {new Response("Child",null,"That movie was cool!"),new Activate(actors[1],true),new Activate(actors[3],false) }),
+                new Multi(new Action[] {new Response("Parent",null,"So doctor, when do we see the scan?"),new Move(s6_mum,1) }),
+                new Multi(new Action[] {new Response("Radiographer",null,"We can have a look on the screen here."),new Move(s6_radog,1) })
             };
 
-            case 15:
+            case 16:
+                Animator s7_mum = actors[0].GetComponent<Animator>();
+                Animator s7_child = actors[1].GetComponent<Animator>();
+                Animator s7_radog = actors[2].GetComponent<Animator>();
+                Animator s7_assist = actors[3].GetComponent<Animator>();
                 return new Action[] {
-                new Response("Kid",null,"Yay, the scan is over!"),
-                new Response("Nurse",null,"Well done! You are a very brave patient!"),
-                new Response("Nurse",null,"Now we are going to have to remove the tracer."),
-                new Response("Nurse",null,"Don't worry, it's very simple."),
-                new Response("Nurse",null,"The tracer will be removed when you go to the toilet."),
-                new Response("Nurse",null,"Drink as much water as you can to go to the toilet faster!"),
+                new Response("Radiographer",null,"Here we are in the hot waiting room."),
+                new Multi(new Action[] {new Response("Radiographer",null,"This is our healthcare assistant who will guide you through the next steps."),new Move(s7_radog,1) }),
+                new Multi(new Action[] {new Response("Assistant",null,"Hi there!"),new Move(s7_assist,1),new Move(s7_radog,2) }),
+                new Multi(new Action[] {new Response("Child",null,"Hiya!"),new Move(s7_child,1) }),
+                new Multi(new Action[] {new Response("Parent",null,"It doesn't feel overly warm in here for a room called the 'hot waiting room'."),new Move(s7_mum,1) }),
+                new Multi(new Action[] {new Response("Assistant",null,"This is called the hot waiting room because the patients are here to remove the radioactive tracer."),new Move(s7_assist,2) }),
+                new Multi(new Action[] {new Response("Parent",null,"How will you do that?"),new Move(s7_mum,2) }),
+                new Multi(new Action[] {new Response("Assistant",null,"It's quite simple, the tracer leaves the body when you go to the bathroom."),new Move(s7_assist,3) }),
+                new Multi(new Action[] {new Response("Assistant",null,"So make sure to drink lots of water so you can get it out faster."),new Move(s7_assist,4) }),
             };
 
-            case 17:
+            case 18:
+                Animator s8_mum = actors[0].GetComponent<Animator>();
+                Animator s8_child = actors[1].GetComponent<Animator>();
+                Animator s8_con1 = actors[2].GetComponent<Animator>();
+                Animator s8_con2 = actors[3].GetComponent<Animator>();
                 return new Action[] {
-                new Response("Nurse",null,"Good job!"),
-                new Response("Parent",null,"Is there anything else we need to do now?"),
-                new Response("Nurse",null,"No, that's it. The scan is over!"),
-                new Response("Parent",null,"Let's go arrange the next appointment."),
-                new Response("Kid",null,"Can we go home now?"),
-                new Response("Parent",null,"In a few minutes!"),
-                new Response("Nurse",null,"You've been a good patient! Have a sticker."),
-                new Response("Kid",null,"Yay!"),
-                new Response("Nurse",null,"Thanks for playing!"),
+                new Response("Consultant",null,"With the tracer gone, that concludes our appointment"),
+                new Multi(new Action[] {new Response("Consultant",null,"I hope you've had a good experience"),new Move(s8_con2,1) }),
+                new Multi(new Action[] { new Response("Parent",null,"Let's go arrange the next appointment."),new Move(s8_mum,1) }),
+                new Multi(new Action[] {new Response("Consultant",null,"You've been a good patient! Have a sticker."),new Move(s8_con1,1) }),
+                new Multi(new Action[] {new Response("Kid",null,"Yay!"),new Move(s8_child,1) }),
+                new Multi(new Action[] {new Response("Consultant",null,"Now you're ready for the real thing!"),new Move(s8_con2,2) })
             };
 
             default: return new Action[] {new Response("Developer",null,"You shouldn't be seeing this"),};
