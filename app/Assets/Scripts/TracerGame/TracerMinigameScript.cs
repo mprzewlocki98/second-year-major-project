@@ -24,7 +24,7 @@ public class TracerMinigameScript : MonoBehaviour
 
         isGlowing = false;
         SetGlowingState();
-        InvokeRepeating("setGlowingState", 1f, 1f);
+        InvokeRepeating("SetGlowingState", 1f, 1f);
     }
     
     // Checking whether a gameObject was clicked 
@@ -110,7 +110,7 @@ public class TracerMinigameScript : MonoBehaviour
         popSource = this.gameObject.GetComponent<AudioSource>();
         popSource.clip = popSound;
     }
-
+    
     // wait then load scene; needed to show wellDone animation before proceeding
     IEnumerator Wait(int seconds)
     {
