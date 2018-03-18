@@ -13,7 +13,7 @@ public class InjectionGameScript : MonoBehaviour {
     private GameObject arrow1, arrow2, arrow3, arrow4;
 
     private Animation wellDoneAnimation;
-    private AudioSource wellDoneSound;
+    private AudioSource wellDoneSound, music;
 
     // execute at start of game
 	void Start () {
@@ -28,6 +28,9 @@ public class InjectionGameScript : MonoBehaviour {
 
         wellDoneAnimation = GameObject.Find("wellDone").GetComponent<Animation>();
         wellDoneSound = GameObject.Find("wellDone").GetComponent<AudioSource>();
+        music = GameObject.Find("GameHandler").GetComponent<AudioSource>();
+
+        music.Play();
     }
 
     // delay setting of state

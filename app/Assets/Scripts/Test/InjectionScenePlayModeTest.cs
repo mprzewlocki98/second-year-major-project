@@ -84,6 +84,8 @@ public class InjectionScenePlayModeTest {
         Vector3 syringePosition = syringe1.transform.position;
         Vector3 wellDoneScale = wellDone.transform.localScale;
 
+        yield return null;
+
         creamLid.GetComponent<ClickHandler>().Invoke("OnMouseDrag", 0);
         creamLid.GetComponent<ClickHandler>().Invoke("OnMouseUp", 0);
 
