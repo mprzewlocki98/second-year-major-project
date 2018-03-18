@@ -6,14 +6,33 @@ using UnityEngine.SceneManagement;
 
 public class WaterGamePlayModeTest {
 
+	private GameObject glass, water1;
+
+	[SetUp]
+	public void Init(){
+
+		SceneManager.LoadScene("15-water-game", LoadSceneMode.Single);
+	}
+
     [UnityTest]
     public IEnumerator TestTemplate() // a template for unit tests in play mode
     {
-        SceneManager.LoadScene("5-metal-game", LoadSceneMode.Single);
 
         yield return null;
 
-        Assert.AreEqual(1, 1);
+       // Assert.AreEqual(1, 1);
     }
+
+	[UnityTest]
+	public IEnumerator test() {
+			
+		glass = GameObject.Find ("glass");
+
+		water1 = GameObject.Find ("water1");
+
+		Assert.IsNull(water1);
+
+		yield return null;
+	}
 
 }

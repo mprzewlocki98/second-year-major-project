@@ -34,6 +34,7 @@ public class FilmsGameEditModeTest {
 
     [Test]
 	// Test all components are in the scene
+
     public void testAllComponentsPresent(){ 
         foreach(GameObject b in buttons) {
             Assert.IsNotNull(b);
@@ -46,6 +47,7 @@ public class FilmsGameEditModeTest {
 
 	[Test]
 	// Test scrollPanel initial position
+
 	public void testScrollPanelInitPosition(){
 		
 		Assert.AreEqual (-600, scrollPanel.GetComponent<RectTransform> ().anchoredPosition.x);
@@ -55,6 +57,7 @@ public class FilmsGameEditModeTest {
 
 	[Test]
 	// Test all buttons initial position
+
 	public void testAllButtonsInitPosition(){
 		int i = 0;
 		foreach(GameObject bttn in buttons){
@@ -66,6 +69,7 @@ public class FilmsGameEditModeTest {
 
 	[Test]
 	// Test some gameobjects have their scripts
+
 	public void testGameObjectContainsScripts(){
 		Assert.IsNotNull(script.GetComponent<GoToNextSceneFilm> ());
 		Assert.IsNotNull(gameController.GetComponent<ScrollRectSnap_CS> ());

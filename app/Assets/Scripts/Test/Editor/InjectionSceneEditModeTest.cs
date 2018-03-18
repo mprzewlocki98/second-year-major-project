@@ -32,7 +32,7 @@ public class InjectionSceneEditModeTest {
     public void AllObjectsPresent() { // to check that all the objects in the scene are there
         EditorSceneManager.OpenScene("Assets/Scenes/7-injection.unity", OpenSceneMode.Single);
 
-        GameObject child, vein, cream, creamLid, syringe1, syringe2, creamBlob, wellDone, gameHandler;
+        GameObject child, vein, cream, creamLid, syringe1, syringe2, creamBlob, wellDone, gameHandler, arrow1, arrow2, arrow3, arrow4;
 
         child = GameObject.Find("Child");
         vein = GameObject.Find("Vein");
@@ -43,6 +43,10 @@ public class InjectionSceneEditModeTest {
         creamBlob = GameObject.Find("CreamBlob");
         wellDone = GameObject.Find("wellDone");
         gameHandler = GameObject.Find("GameHandler");
+        arrow1 = GameObject.Find("Arrow1");
+        arrow2 = GameObject.Find("Arrow2");
+        arrow3 = GameObject.Find("Arrow3");
+        arrow4 = GameObject.Find("Arrow4");
 
         Assert.IsNotNull(child);
         Assert.IsNotNull(vein);
@@ -53,6 +57,10 @@ public class InjectionSceneEditModeTest {
         Assert.IsNotNull(creamBlob);
         Assert.IsNotNull(wellDone);
         Assert.IsNotNull(gameHandler);
+        Assert.IsNotNull(arrow1);
+        Assert.IsNotNull(arrow2);
+        Assert.IsNotNull(arrow3);
+        Assert.IsNotNull(arrow4);
     }
 
 }
