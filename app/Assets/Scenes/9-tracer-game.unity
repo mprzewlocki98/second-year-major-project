@@ -1269,6 +1269,8 @@ MonoBehaviour:
   animation: {fileID: 1478350704}
   glowing: {fileID: 21300000, guid: 834792102c9e7744b999c62f81cd82c5, type: 3}
   notGlowing: {fileID: 21300000, guid: 437355024e246bc4c8c8bdb099c13127, type: 3}
+  popSound: {fileID: 8300000, guid: 0e3c25c61db1146f989bb0e42a050f75, type: 3}
+  winSound: {fileID: 8300000, guid: 13295c4048e3c4ebfa2e19fe08d37eb3, type: 3}
 --- !u!1 &1115085515
 GameObject:
   m_ObjectHideFlags: 0
