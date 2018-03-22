@@ -8,11 +8,11 @@ using UnityEditor.SceneManagement;
 
 public class FilmsGameEditModeTest {
 
-	private GameObject b1, b2, b3, b4, b5, b6, b7, b8, script, panel, scrollPanel,gameController;
+	private GameObject b1, b2, b3, b4, b5, b6, b7, b8, script, panel, scrollPanel, gameController;
 	private GameObject[] buttons;
 
 	[SetUp]
-	public void Init(){
+	public void Init() {
 		EditorSceneManager.OpenScene("Assets/Scenes/11-films-game.unity", OpenSceneMode.Single);
 
 		b1 = GameObject.Find("Button");
@@ -34,25 +34,20 @@ public class FilmsGameEditModeTest {
 
     [Test]
 	// Test all components are in the scene
-    public void testAllComponentsPresent()
-    { 
-        Assert.IsNotNull(b1);
-        Assert.IsNotNull(b2);
-        Assert.IsNotNull(b3);
-        Assert.IsNotNull(b4);
-        Assert.IsNotNull(b5);
-        Assert.IsNotNull(b6);
-        Assert.IsNotNull(b7);
-        Assert.IsNotNull(b8);
+
+    public void testAllComponentsPresent(){ 
+        foreach(GameObject b in buttons) {
+            Assert.IsNotNull(b);
+        }
         Assert.IsNotNull(script);
         Assert.IsNotNull(panel);
         Assert.IsNotNull(scrollPanel);
 		Assert.IsNotNull(gameController);
-
     }
 
 	[Test]
 	// Test scrollPanel initial position
+
 	public void testScrollPanelInitPosition(){
 		
 		Assert.AreEqual (-600, scrollPanel.GetComponent<RectTransform> ().anchoredPosition.x);
@@ -62,6 +57,7 @@ public class FilmsGameEditModeTest {
 
 	[Test]
 	// Test all buttons initial position
+
 	public void testAllButtonsInitPosition(){
 		int i = 0;
 		foreach(GameObject bttn in buttons){
@@ -73,6 +69,7 @@ public class FilmsGameEditModeTest {
 
 	[Test]
 	// Test some gameobjects have their scripts
+
 	public void testGameObjectContainsScripts(){
 		Assert.IsNotNull(script.GetComponent<GoToNextSceneFilm> ());
 		Assert.IsNotNull(gameController.GetComponent<ScrollRectSnap_CS> ());

@@ -59,7 +59,7 @@ public class DrawCanvas : MonoBehaviour {
         //defunct
     }
 
-    private void BrushPlace(Vector2 hp)
+	public void BrushPlace(Vector2 hp)
     {
         float fy = hp.y * 100 + newTex.height / 2;
         float fx = hp.x * 100 + newTex.width / 2;

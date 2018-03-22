@@ -14,7 +14,8 @@ public class FilmsGamePlayModeTest {
 	}
 
 	[UnityTest]
-	// Test for load the scene 
+	// Test for loading the current scene 
+
 	public IEnumerator testLoadScene(){
 		Scene currentScene = SceneManager.GetActiveScene ();
 		Assert.AreEqual ("11-films-game",currentScene.name);
@@ -24,6 +25,7 @@ public class FilmsGamePlayModeTest {
 
 	[UnityTest]
 	// Test for scrollPanel movement 
+
 	public IEnumerator testScrollPanelToPosition(){ 
 
 		GameObject scrollPanel = GameObject.Find("scrollPanel");
@@ -41,7 +43,7 @@ public class FilmsGamePlayModeTest {
 
 		yield return new WaitForSeconds (2); // It will slowly move to -1200, not directly
 
-		UnityEngine.Assertions.Assert.AreApproximatelyEqual (-1200,scrollPanelPositionNow.anchoredPosition.x,5f);
+		UnityEngine.Assertions.Assert.AreApproximatelyEqual (-1200,scrollPanelPositionNow.anchoredPosition.x,2f);
 
 		yield return null;
 
@@ -50,6 +52,7 @@ public class FilmsGamePlayModeTest {
 
 	[UnityTest]
 	// Test for clicking the button with sound 
+
 	public IEnumerator testClickButtonWithSound(){		
 
 		GameObject obj = GameObject.Find ("Button (1)");	// test Button 1 works
@@ -67,6 +70,7 @@ public class FilmsGamePlayModeTest {
 
 	[UnityTest]
 	// Test for clicking the button and move to next scene
+
 	public IEnumerator testClickButtonToNextScene(){
 
 		GameObject obj = GameObject.Find ("Button (2)");	// test Button 2 works

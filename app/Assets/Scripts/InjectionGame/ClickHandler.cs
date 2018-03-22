@@ -93,7 +93,6 @@ public class ClickHandler : MonoBehaviour {
 
             injectionGameScript.ChangeState(InjectionGameScript.State.INJECT_SYRINGE);
         } else {
-            Debug.Log(syringeLastGoodPosition);
             StartCoroutine(TweenMovement(syringe1, syringe1.transform.position, syringeLastGoodPosition));
         }
     }

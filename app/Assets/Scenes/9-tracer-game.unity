@@ -1268,7 +1268,9 @@ MonoBehaviour:
   scoreDisplay: {fileID: 1829406601}
   animation: {fileID: 1478350704}
   glowing: {fileID: 21300000, guid: 834792102c9e7744b999c62f81cd82c5, type: 3}
-  notGlowing: {fileID: 21300000, guid: f12a659d32a8cbe45894142406548aec, type: 3}
+  notGlowing: {fileID: 21300000, guid: 437355024e246bc4c8c8bdb099c13127, type: 3}
+  popSound: {fileID: 8300000, guid: 0e3c25c61db1146f989bb0e42a050f75, type: 3}
+  winSound: {fileID: 8300000, guid: 13295c4048e3c4ebfa2e19fe08d37eb3, type: 3}
 --- !u!1 &1115085515
 GameObject:
   m_ObjectHideFlags: 0
@@ -1381,7 +1383,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1179275664
 Prefab:
@@ -2094,6 +2096,7 @@ GameObject:
   - component: {fileID: 1478350705}
   - component: {fileID: 1478350704}
   - component: {fileID: 1478350703}
+  - component: {fileID: 1478350707}
   m_Layer: 0
   m_Name: wellDone
   m_TagString: Untagged
@@ -2161,12 +2164,12 @@ SpriteRenderer:
   m_SortingLayerID: 159327417
   m_SortingLayer: 5
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: c84c6071c76404f4b8eba6b3b3cebc5b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f87e43faf898f4efbb89acc38c836df3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.23, y: 2.24}
+  m_Size: {x: 15, y: 15}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -2182,8 +2185,88 @@ Transform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1478350707
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1478350702}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 13295c4048e3c4ebfa2e19fe08d37eb3, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.3
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!1001 &1527151576
 Prefab:
   m_ObjectHideFlags: 0
@@ -2609,7 +2692,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Score: 0'
+  m_Text: 0 tapped!
 --- !u!222 &1829406602
 CanvasRenderer:
   m_ObjectHideFlags: 0
