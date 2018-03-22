@@ -45,6 +45,9 @@ EditorBuildSettings:
     path: Assets/Scenes/12-cutscene.unity
     guid: 7f78535e7c6bd4c7aac9d3851d4c236e
   - enabled: 1
+    path: Assets/Scenes/12a-cutscene2.unity
+    guid: c1673a989917df24ab33bbe298dff14d
+  - enabled: 1
     path: Assets/Scenes/13-scan-game.unity
     guid: fd8015de5f86a5241987c8f8464d2f57
   - enabled: 1
@@ -53,6 +56,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/15-water-game.unity
     guid: 6390f81600029c348a97e8718e516703
+  - enabled: 1
+    path: Assets/Scenes/15a-cutscene.unity
+    guid: aaa178dd45e605c499f0d63f305c83d7
   - enabled: 1
     path: Assets/Scenes/16-end-game.unity
     guid: bdc60900fd7dd5844b603f71ff89b903
