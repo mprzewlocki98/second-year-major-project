@@ -8,8 +8,6 @@ public class PlayMetalGame : MonoBehaviour {
 	private bool processEnd = true;
 	private Vector3 mousePos;
 
-    private bool easyMode = Difficulty.easyMode;
-
 
 	// Use this for initialization
 	void Start () {
@@ -23,7 +21,7 @@ public class PlayMetalGame : MonoBehaviour {
 			
 			GameObject obj = GameObject.FindWithTag ("item");
 
-			if (obj != null && Time.time - hintSecond >= 8) {
+			if (obj != null && Time.time - hintSecond >= 5) {
 			
 				SpriteRenderer SR = obj.GetComponent<SpriteRenderer> ();
 

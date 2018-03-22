@@ -5,12 +5,12 @@ public class CompleteMetalGame : MonoBehaviour {
 
 	private bool played = false;
 	private bool showIcon = true;
-	private Animation animtion;
+	private Animation animation;
 	private AudioSource successSource; 
 
 	// Use this for initialization
 	void Start(){
-		animtion = this.gameObject.GetComponent<Animation> ();
+		animation = this.gameObject.GetComponent<Animation> ();
 		successSource = this.gameObject.GetComponent<AudioSource> ();
 		successSource.playOnAwake = false;
 	}
@@ -22,11 +22,11 @@ public class CompleteMetalGame : MonoBehaviour {
 
 		if (played){
 			if (showIcon) {
-				animtion.Play ("wellDone");
+				animation.Play ("wellDone");
 				successSource.Play ();
 				showIcon = false;
 			}
-			Invoke ("nextScene", 5);
+			Invoke ("nextScene", 2);
 		}
 	}
 

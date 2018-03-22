@@ -53,10 +53,12 @@ public class ScanGamePlayModeTest {
 	// Test for activing the continue Button and move to next scene 
 
 	public IEnumerator testClickButtonToNextScene(){
-		panel = GameObject.Find ("Panel");
-		buttonContinue = panel.transform.Find ("ButtonContinue").gameObject;
-		buttonContinue.SetActive (true);
-		buttonContinue.GetComponent<Button> ().onClick.Invoke();
+//		panel = GameObject.Find ("Panel");
+//		buttonContinue = panel.transform.Find ("ButtonContinue").gameObject;
+//		buttonContinue.SetActive (true);
+//		buttonContinue.GetComponent<Button> ().onClick.Invoke();
+		DrawCanvas drawCanvas = GameObject.Find ("Cover").GetComponent<DrawCanvas> ();
+		drawCanvas.Invoke ("NextScene",0);
 		yield return null;
 
 		Scene currentScene = SceneManager.GetActiveScene ();

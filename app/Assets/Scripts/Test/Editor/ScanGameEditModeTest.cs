@@ -8,7 +8,7 @@ using UnityEditor.SceneManagement;
 
 public class ScanGameEditModeTest {
 
-	private GameObject back, cover, textPercentage, buttonContinue, panel,nextSceneScript;
+	private GameObject back, cover, textPercentage, buttonContinue, panel,nextSceneScript,wellDone;
 
 	[SetUp]
 	public void Init(){
@@ -17,8 +17,10 @@ public class ScanGameEditModeTest {
 		cover = GameObject.Find("Cover");
 		panel = GameObject.Find ("Panel");
 		textPercentage = GameObject.Find("TextPercentage");
-		buttonContinue = GameObject.Find("ButtonContinue");
+		wellDone = GameObject.Find("WellDone");
+//		buttonContinue = GameObject.Find("ButtonContinue");
 		nextSceneScript = GameObject.Find ("NextSceneScript");
+
 	}
 
 	[Test]
@@ -29,11 +31,7 @@ public class ScanGameEditModeTest {
 		Assert.IsNotNull (cover);
 		Assert.IsNotNull (panel);
 		Assert.IsNotNull (textPercentage);
-		Assert.IsNull (buttonContinue);		// continue button is not existed right now
-		buttonContinue = panel.transform.Find ("ButtonContinue").gameObject;
-		Assert.False (buttonContinue.activeSelf);
-		buttonContinue.SetActive (true);	// active ContinueButton
-		Assert.IsNotNull (buttonContinue);
+		Assert.IsNotNull(wellDone);
 		Assert.IsNotNull(nextSceneScript);
 	}
 
@@ -45,15 +43,12 @@ public class ScanGameEditModeTest {
 		Assert.AreEqual (0.5f,back.GetComponent<Transform>().position.y);
 		Assert.AreEqual (-0.5f,cover.GetComponent<Transform>().position.x);
 		Assert.AreEqual (0.3f,cover.GetComponent<Transform>().position.y);
-		Assert.AreEqual (-14.6f,panel.GetComponent<RectTransform>().anchoredPosition.x);
+		UnityEngine.Assertions.Assert.AreApproximatelyEqual (-14.6f, panel.GetComponent<RectTransform>().anchoredPosition.x,0.1f);
 		Assert.AreEqual (-43.15f, panel.GetComponent<RectTransform> ().anchoredPosition.y);
 		Assert.AreEqual  (24.4f,textPercentage.GetComponent<RectTransform>().anchoredPosition.x);
 		Assert.AreEqual  (-7.4f, textPercentage.GetComponent<RectTransform> ().anchoredPosition.y);
-
-		buttonContinue = panel.transform.Find ("ButtonContinue").gameObject;
-		Assert.AreEqual  (2.7f,buttonContinue.GetComponent<RectTransform>().anchoredPosition.x);
-		Assert.AreEqual  (-55.05f, buttonContinue.GetComponent<RectTransform> ().anchoredPosition.y);
-
+		Assert.AreEqual (0.25f,wellDone.GetComponent<Transform>().position.x);
+		Assert.AreEqual (0.03f,wellDone.GetComponent<Transform>().position.y);
 	}
 
 	[Test]

@@ -13,6 +13,7 @@ public class DrawCanvas : MonoBehaviour {
 
     private bool easyMode = Difficulty.easyMode;
     private bool animationPlayed;
+	private AudioSource successSource; 
 
     public int scanned = 0;
 
@@ -26,6 +27,8 @@ public class DrawCanvas : MonoBehaviour {
         Color[] colors = oldTex.GetPixels(0, 0, oldTex.width, oldTex.height);
         newTex.SetPixels(colors);
         animationPlayed = false;
+		successSource = GameObject.Find("WellDone").GetComponent<AudioSource> ();
+		successSource.playOnAwake = false;
     }
 
 
@@ -106,14 +109,6 @@ public class DrawCanvas : MonoBehaviour {
         {
             textPercent.text = "Scan Complete!";
 
-            GameObject wellDone = GameObject.Find("wellDone");
-            SpriteRenderer SR = wellDone.GetComponent<SpriteRenderer>();
-            SR.color = new Color(SR.color.r, SR.color.g, SR.color.b, 255f);
-
-            Transform wellDoneT = wellDone.GetComponent<Transform>();
-
-            //wellDoneT.localScale = new Vector3(1f, 1f, 1f); -Hard coding doesnt fix bug
-
             if(!animationPlayed) {
                 PlayAnimation();
             }
@@ -125,8 +120,9 @@ public class DrawCanvas : MonoBehaviour {
 
     void PlayAnimation()
     {
-        Animation animation = GameObject.Find("wellDone").GetComponent<Animation>();
-        animation.Play("wellDone");
+        Animation animation = GameObject.Find("WellDone").GetComponent<Animation>();
+        animation.Play("great");
+		successSource.Play ();
         animationPlayed = true;
     }
 
