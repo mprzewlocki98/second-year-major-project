@@ -3,6 +3,9 @@ using NUnit.Framework;
 using System.Collections;
 using UnityEngine.SceneManagement;
 using UnityEngine;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 public class GreenLightPlayModeTest {
 
@@ -36,7 +39,10 @@ public class GreenLightPlayModeTest {
 
         // Add our game objects (with the camera included) to the scene by instantiating it.
         root = GameObject.Instantiate(root);
-        var prefab = UnityEditor.AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Light.prefab");
+
+#if UNITY_EDITOR
+
+        var prefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Light.prefab");
 
         // Instantiate the prefab (by adding it to the scene).
         prefab = GameObject.Instantiate(prefab, new Vector3(0, 0, 10), new Quaternion(0, 180, 0, 0));
@@ -53,6 +59,8 @@ public class GreenLightPlayModeTest {
         // Destroy the temporary objects
         GameObject.Destroy(prefab);
         GameObject.Destroy(root);
+
+#endif
 
         yield return null;
     }

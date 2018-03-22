@@ -240,7 +240,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -14.6, y: -43.15}
+  m_AnchoredPosition: {x: -14.599976, y: -43.15}
   m_SizeDelta: {x: 352.19995, y: 52.299988}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &111998793
@@ -308,7 +308,6 @@ MonoBehaviour:
   brushsize: 20
   oldTex: {fileID: 2800000, guid: 9f66338eb8a56c24d9e6c92cdcfec96b, type: 3}
   textPercent: {fileID: 570810274}
-  buttonContinue: {fileID: 0}
   scanned: 0
 --- !u!212 &504411050
 SpriteRenderer:
@@ -708,13 +707,13 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: e5dc6690470c364439b48acfb5765b8b, type: 3}
+  m_SortingOrder: 4
+  m_Sprite: {fileID: 21300000, guid: f87e43faf898f4efbb89acc38c836df3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.23, y: 2.24}
+  m_Size: {x: 15, y: 15}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -727,7 +726,7 @@ Transform:
   m_GameObject: {fileID: 1204187345}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.25, y: 0.03, z: -6}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
