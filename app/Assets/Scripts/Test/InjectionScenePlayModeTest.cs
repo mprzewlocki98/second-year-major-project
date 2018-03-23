@@ -89,7 +89,7 @@ public class InjectionScenePlayModeTest {
         creamLid.GetComponent<ClickHandler>().Invoke("OnMouseDrag", 0);
         creamLid.GetComponent<ClickHandler>().Invoke("OnMouseUp", 0);
 
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(0.3f);
 
         Assert.AreNotEqual(creamLidPosition, creamLid.transform.position);
         Assert.AreEqual(igs.GetState(), InjectionGameScript.State.APPLY_CREAM);
@@ -117,7 +117,7 @@ public class InjectionScenePlayModeTest {
         yield return null;
         creamBlob.GetComponent<ClickHandler>().Invoke("OnMouseUp", 0);
 
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(0.3f);
 
         Assert.AreEqual(igs.GetState(), InjectionGameScript.State.MOVE_SYRINGE);
 
@@ -137,7 +137,7 @@ public class InjectionScenePlayModeTest {
 
         syringe2.GetComponent<ClickHandler>().Invoke("OnMouseDrag", 0);
 
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(0.3f);
         Assert.AreEqual(igs.GetState(), InjectionGameScript.State.DONE);
 
         // check that the well done animation plays
