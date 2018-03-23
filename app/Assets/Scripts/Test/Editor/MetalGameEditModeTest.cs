@@ -80,9 +80,9 @@ public class MetalGameEditModeTest {
 	// Test some gameobjects have their scripts
 
 	public void testGameObjectContainsScripts(){
-		Assert.IsNotNull(child.GetComponent<PlayMetalGame> ());
+		Assert.IsNotNull(child.GetComponent<playMetalGame> ());
 		Assert.IsNotNull(wellDone.GetComponent<CompleteMetalGame> ());
-		Assert.IsNotNull(hint.GetComponent<HintTextController> ());
+		Assert.IsNotNull(hint.GetComponent<hintTextController> ());
 
 		foreach(GameObject item in items){
 			Assert.IsNotNull (item.GetComponent<DragItem>());

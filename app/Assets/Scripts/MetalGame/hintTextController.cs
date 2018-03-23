@@ -1,9 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class HintTextController : MonoBehaviour {
+public class hintTextController : MonoBehaviour {
 
 	private Text hint;
 	private int process = 0;	// 0 is inital state, 1 is playing state, 2 is complete state
