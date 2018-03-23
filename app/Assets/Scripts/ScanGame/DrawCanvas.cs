@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class DrawCanvas : MonoBehaviour {
 
+    bool dif;
     public float brushsize = 20;
 
     private Texture2D newTex;
@@ -20,9 +21,13 @@ public class DrawCanvas : MonoBehaviour {
     Vector2 lastpos = new Vector2(-1,-1);
 
     bool complete;
-    
+    private int soundtimer = 0;
+    public int soundmax = 1;
 
     void Start () {
+        dif = Difficulty.easyMode;
+        if (!dif) brushsize = 12;
+
         newTex = new Texture2D(oldTex.width,oldTex.height);       
         Color[] colors = oldTex.GetPixels(0, 0, oldTex.width, oldTex.height);
         newTex.SetPixels(colors);
@@ -33,6 +38,7 @@ public class DrawCanvas : MonoBehaviour {
 
 
     void Update () {
+        
         if (Input.GetMouseButton(0))
         {            
             Vector2 clickedPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -40,27 +46,20 @@ public class DrawCanvas : MonoBehaviour {
             if (hit)
             {
                 Vector2 hitPoint = this.transform.InverseTransformPoint(hit.point);
-
+                GetComponent<AudioSource>().volume = 0.5f;
                 BrushPlace(hitPoint);
-               
-                //float dist = Mathf.Sqrt(Mathf.Pow(hitPoint.x - lastpos.x,2) + Mathf.Pow(hitPoint.y - lastpos.y, 2));
-                //Debug.Log("dist" + dist);
-                //if (dist > 0.4f && lastpos.x != -1)
-                //{
-                  // InterpolateBrush(lastpos, hitPoint, dist);                    
-                //}
                 lastpos = hitPoint;
                 UpdatePercent();
             }
         }
+        else
+        {
+            GetComponent<AudioSource>().volume -= 0.050f;
+        }
 
 	}
 
-
-    private void InterpolateBrush(Vector2 startpos, Vector2 endpos, float dist)
-    {
-        //defunct
-    }
+    
 
 	public void BrushPlace(Vector2 hp)
     {
@@ -86,7 +85,7 @@ public class DrawCanvas : MonoBehaviour {
         }
         newTex.Apply();
         GetComponent<SpriteRenderer>().sprite = Sprite.Create(newTex, new Rect(0, 0, newTex.width, newTex.height), new Vector2(0.5f, 0.5f));
-        
+        GetComponent<AudioSource>().volume += 0.03f;
     }
 
     private void OnMouseUp()
