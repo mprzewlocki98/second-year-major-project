@@ -7,6 +7,9 @@ using UnityEngine;
 using UnityEditor;
 #endif
 
+// NB: UnityEditor will be used to create a Prefab instance but should
+// not be a part of the build.
+
 public class GreenLightPlayModeTest {
 
     [SetUp]
