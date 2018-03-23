@@ -3,34 +3,42 @@ using UnityEngine;
 
 public class CompleteMetalGame : MonoBehaviour {
 
-	Animation animtion;
-	bool played = false;
-	bool showIcon = true;
+	private bool played = false;
+	private bool showIcon = true;
+	private Animation animation;
+	private AudioSource successSource; 
 
+	// Use this for initialization
 	void Start(){
-		animtion = GetComponent<Animation> ();
+		animation = this.gameObject.GetComponent<Animation> ();
+		successSource = this.gameObject.GetComponent<AudioSource> ();
+		successSource.playOnAwake = false;
 	}
 
+
+	// Update is called once per frame
 	void Update(){
-		successDelegate methodToUse = checkSuccess;
-		played = methodToUse.Invoke();
+		played = CompleteMetalGame.checkSuccess();
 
 		if (played){
 			if (showIcon) {
-				animtion.Play ("wellDone");
+				animation.Play ("wellDone");
+				successSource.Play ();
 				showIcon = false;
 			}
-			Invoke ("nextScene", 5);
+			Invoke ("nextScene", 2);
 		}
 	}
 
-	void nextScene(){
+
+	// move to the next scene
+	private void nextScene(){
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
-	delegate bool successDelegate();
 
-	bool checkSuccess(){
+	// check whether the game is success or not
+	public static bool checkSuccess(){
 		GameObject[] objs = GameObject.FindGameObjectsWithTag ("item");
 
 		if (objs.Length == 0) {

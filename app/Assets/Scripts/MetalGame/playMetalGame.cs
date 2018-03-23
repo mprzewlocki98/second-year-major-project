@@ -1,14 +1,13 @@
 ﻿using UnityEngine;
 
-public class playMetalGame : MonoBehaviour {
+public class PlayMetalGame : MonoBehaviour {
+	
 	private float hintSecond = 1f;
-	private float speed = 10f; //how fast it shakes
-	private float amount = 2f;//how much it shakes
+	private float speed = 10f;	//how fast item shakes
+	private float amount = 2f;	//how many times item shakes
 	private bool processEnd = true;
+	private Vector3 mousePos;
 
-    private bool easyMode = Difficulty.easyMode;
-
-    Vector3 mousePos;
 
 	// Use this for initialization
 	void Start () {
@@ -18,30 +17,33 @@ public class playMetalGame : MonoBehaviour {
 		
 	// Update is called once per frame
 	void Update () {
-		GameObject obj = GameObject.FindWithTag ("item");
-
-		if (obj != null && Time.time - hintSecond >= 5) {
+		if (Difficulty.easyMode) {
 			
-			SpriteRenderer SR = obj.GetComponent<SpriteRenderer> ();
+			GameObject obj = GameObject.FindWithTag ("item");
 
-			if (amount > 0) {
-				processEnd = false;
-				SR.color = new Color (SR.color.r, SR.color.g, SR.color.b, Mathf.Sin (Time.time * speed));
-				amount -= Time.deltaTime;
+			if (obj != null && Time.time - hintSecond >= 5) {
+			
+				SpriteRenderer SR = obj.GetComponent<SpriteRenderer> ();
 
-			} else {
+				if (amount > 0) {
+					processEnd = false;
+					SR.color = new Color (SR.color.r, SR.color.g, SR.color.b, Mathf.Sin (Time.time * speed));
+					amount -= Time.deltaTime;
 
-				SR.color = new Color (SR.color.r, SR.color.g, SR.color.b, 1);
+				} else {
+
+					SR.color = new Color (SR.color.r, SR.color.g, SR.color.b, 1);
+					amount = 2f;
+					hintSecond = Time.time;
+					processEnd = true;
+				}	
+			}
+			
+			if (Input.mousePosition != mousePos && processEnd) {
 				amount = 2f;
 				hintSecond = Time.time;
-				processEnd = true;
-			}	
-		}
-			
-		if (Input.mousePosition != mousePos && processEnd) {
-			amount = 2f;
-			hintSecond = Time.time;
-			mousePos = Input.mousePosition;
+				mousePos = Input.mousePosition;
+			}
 		}
 	}
 }

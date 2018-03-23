@@ -8,9 +8,10 @@ public class GameComplete : MonoBehaviour {
     private GameObject button;
     private ButtonClick buttonScript;
     private bool animationPlayed;
-	
-	void Start () {
+	private AudioSource successSource; 
 
+	void Start () {
+		successSource = GetComponent<AudioSource> ();
         animationPlayed = false;
         button = GameObject.Find("button");
         buttonScript = button.GetComponent<ButtonClick>();
@@ -26,6 +27,7 @@ public class GameComplete : MonoBehaviour {
             if (!animationPlayed) {
 
                 PlayAnimation();
+				successSource.Play ();
             }
 
             Invoke("NextScene", 3);
