@@ -7,7 +7,12 @@ public class MainMenu : MonoBehaviour {
 
     public GameObject choiceCanvas;
 
-	public void NextScene(int page) {
+    void Start() {
+
+        SetNotActiveChoiceCanvas();
+    }
+
+    public void NextScene(int page) {
 
         SceneManager.LoadScene(page);
     }
