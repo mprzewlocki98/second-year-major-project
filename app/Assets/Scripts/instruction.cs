@@ -5,10 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class instruction : MonoBehaviour {
 
-    public void PlayGame(int page)
+    public void PlayGame()
     {
 
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + page);
+        SceneManager.LoadScene(0);
     }
 
 }
