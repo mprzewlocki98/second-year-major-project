@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GlassDrag : MonoBehaviour {
 
     public bool canDrag = true;
     public AudioClip Glass_drag;
     public AudioClip Glass_drop;
+    public Text hint;
 
     private bool atPosition = false;
     private float distance = 10;
@@ -19,6 +21,7 @@ public class GlassDrag : MonoBehaviour {
 
     void Start() {
 
+        hint.text = "Drag the glass to the Water Dispenser";
         glassToBe = GameObject.Find("glassCollider");
         glassCollider = glassToBe.GetComponent<Collider2D>();
     }
@@ -48,6 +51,8 @@ public class GlassDrag : MonoBehaviour {
         }
 
         if (gameObject.GetComponent<Collider2D>().IsTouching(glassCollider)) {
+
+            hint.text = "Press the Button to pour water";
 
             canDrag = false;
             atPosition = true;
