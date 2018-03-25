@@ -24,6 +24,11 @@ public class InjectionGameScript : MonoBehaviour {
 
         if (easyMode) {
             ShowArrow();
+        } else {
+            arrow1.SetActive(false);
+            arrow2.SetActive(false);
+            arrow3.SetActive(false);
+            arrow4.SetActive(false);
         }
 
         wellDoneAnimation = GameObject.Find("wellDone").GetComponent<Animation>();
