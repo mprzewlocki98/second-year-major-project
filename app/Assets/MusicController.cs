@@ -26,5 +26,6 @@ public class MusicController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         frames++;
+        if (frames > 165 * 60) { frames = 0; }
 	}
 }
