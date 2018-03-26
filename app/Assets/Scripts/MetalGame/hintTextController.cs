@@ -47,7 +47,7 @@ public class hintTextController : MonoBehaviour {
 
 		if (CompleteMetalGame.checkSuccess()) {
 			process = 2;
-			hint.text = "Congratulations !!!";
+			hint.text = "Congratulations!";
 		}
 	}
 

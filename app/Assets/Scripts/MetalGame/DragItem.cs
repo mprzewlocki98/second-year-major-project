@@ -2,7 +2,7 @@
 
 public class DragItem : MonoBehaviour {
 	private float decaySecond = 1f;
-	private float elaspedSecond = 0;
+	private float elapsedSecond = 0;
 	private float distance = 10;
 	private bool flag = false;
 	private AudioSource clickSource;
@@ -41,9 +41,9 @@ public class DragItem : MonoBehaviour {
 	// Update is called once per frame
 	void Update(){
 		if (flag) {
-			float scaleRate = (decaySecond - elaspedSecond) / decaySecond;
+			float scaleRate = (decaySecond - elapsedSecond) / decaySecond;
 			transform.localScale *= scaleRate;
-			elaspedSecond += Time.deltaTime;
+			elapsedSecond += Time.deltaTime;
 		}
 			
 	}
