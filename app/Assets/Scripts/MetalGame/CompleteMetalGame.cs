@@ -2,7 +2,7 @@
 using UnityEngine;
 
 public class CompleteMetalGame : MonoBehaviour {
-
+	public static int NumberItems;
 	private bool played = false;
 	private bool showIcon = true;
 	private Animation animation;
@@ -10,6 +10,7 @@ public class CompleteMetalGame : MonoBehaviour {
 
 	// Use this for initialization
 	void Start(){
+		NumberItems = GameObject.FindGameObjectsWithTag("item").Length;
 		animation = this.gameObject.GetComponent<Animation> ();
 		successSource = this.gameObject.GetComponent<AudioSource> ();
 		successSource.playOnAwake = false;
@@ -26,7 +27,7 @@ public class CompleteMetalGame : MonoBehaviour {
 				successSource.Play ();
 				showIcon = false;
 			}
-			Invoke ("nextScene", 2);
+			Invoke ("nextScene", 1);
 		}
 	}
 
@@ -34,14 +35,13 @@ public class CompleteMetalGame : MonoBehaviour {
 	// move to the next scene
 	private void nextScene(){
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
     }
 
 
 	// check whether the game is success or not
 	public static bool checkSuccess(){
-		GameObject[] objs = GameObject.FindGameObjectsWithTag ("item");
-
-		if (objs.Length == 0) {
+		if(CompleteMetalGame.NumberItems == 0){
 			return true;
 		}
 		return false;

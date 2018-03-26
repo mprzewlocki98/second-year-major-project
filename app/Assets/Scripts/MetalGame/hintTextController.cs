@@ -5,7 +5,6 @@ public class hintTextController : MonoBehaviour {
 
 	private Text hint;
 	private int process = 0;	// 0 is inital state, 1 is playing state, 2 is complete state
-	private int numberOfItem = 6;
 
 	// Use this for initialization
 	void Start () {
@@ -15,37 +14,30 @@ public class hintTextController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		
 		if (process == 0) {
 			Invoke ("initText",3);
 		}
+
 		if (Difficulty.easyMode) {
 			if (process == 1) {
-				int temp = numberOfItemLeft ();
-				if (temp != numberOfItem) {
-					if (temp > 1) {
-						hint.text = temp + " items left!";
-					} else {
-						hint.text = temp + " item left!";
-					}
 
-					numberOfItem = temp;
+				int temp = CompleteMetalGame.NumberItems;
+				if(temp == 1){
+					hint.text = temp + " item left!";
 				}
-				if (temp == 0) {
-					process = 2;
+				if (temp > 1) {
+					hint.text = temp + " items left!";
 				}
 			}
 		} else {
 			if (process == 1) {
-				
-				if (Difficulty.easyMode) {
-					Invoke ("cleanText", 4);
-				}
-
+				Invoke ("cleanText", 1);
 				process = 2;
 			}
 		}
 
-		if (CompleteMetalGame.checkSuccess()) {
+		if (CompleteMetalGame.NumberItems == 0) {
 			process = 2;
 			hint.text = "Congratulations!";
 		}
@@ -60,9 +52,5 @@ public class hintTextController : MonoBehaviour {
 	private void initText(){
 		process = 1;
 	}
-
-	// to check how many items left
-	private int numberOfItemLeft(){
-		return GameObject.FindGameObjectsWithTag ("item").Length;
-	}
+		
 }
