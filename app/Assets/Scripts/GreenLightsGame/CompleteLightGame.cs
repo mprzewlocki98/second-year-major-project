@@ -39,7 +39,7 @@ public class CompleteLightGame : MonoBehaviour {
 
             }
             // Invoke allows a certain waiting time
-            Invoke("PlayerWon", 4);
+            Invoke("PlayerWon", 3);
         }
     }
 

@@ -24,6 +24,11 @@ public class InjectionGameScript : MonoBehaviour {
 
         if (easyMode) {
             ShowArrow();
+        } else {
+            arrow1.SetActive(false);
+            arrow2.SetActive(false);
+            arrow3.SetActive(false);
+            arrow4.SetActive(false);
         }
 
         wellDoneAnimation = GameObject.Find("wellDone").GetComponent<Animation>();
@@ -95,7 +100,7 @@ public class InjectionGameScript : MonoBehaviour {
         yield return new WaitForSeconds(1);
         wellDoneAnimation.Play();
         wellDoneSound.Play();
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(2);
         SceneManager.LoadScene("8-cutscene");
 	}
 }
