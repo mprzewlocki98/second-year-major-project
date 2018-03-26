@@ -36,6 +36,8 @@ public class DragItem : MonoBehaviour {
 	void OnMouseUp () {
 		flag = true;
 		Destroy(this.gameObject, decaySecond); // destroy the object once it is dragged off
+		CompleteMetalGame.NumberItems --;
+
 	}
 
 	// Update is called once per frame
