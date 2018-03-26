@@ -28,11 +28,11 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 ## Running the tests
 
 ### Edit Mode Tests and Play Mode tests
-NB: Edit mode test scripts are found in "Assets > Scripts > Test > Editor"
-    Play mode test scripts are found in "Assets > Scripts > Test"
+- Edit mode test scripts are found in "Assets > Scripts > Test > Editor"
+- Play mode test scripts are found in "Assets > Scripts > Test"
 
 To execute both tests, launch Unity > Window > Test Runner. Toggle between
-the Edit Mode and Play Mode to run the tests.
+the Edit Mode and Play Mode tabs to run the tests.
 
 ## Closed branches
 
