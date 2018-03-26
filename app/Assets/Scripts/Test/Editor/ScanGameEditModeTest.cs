@@ -43,9 +43,9 @@ public class ScanGameEditModeTest {
 		Assert.AreEqual (0.5f,back.GetComponent<Transform>().position.y);
 		Assert.AreEqual (-0.5f,cover.GetComponent<Transform>().position.x);
 		Assert.AreEqual (0.3f,cover.GetComponent<Transform>().position.y);
-		UnityEngine.Assertions.Assert.AreApproximatelyEqual (-14.6f, panel.GetComponent<RectTransform>().anchoredPosition.x,0.1f);
-		Assert.AreEqual (-43.15f, panel.GetComponent<RectTransform> ().anchoredPosition.y);
-		Assert.AreEqual  (24.4f,textPercentage.GetComponent<RectTransform>().anchoredPosition.x);
+		UnityEngine.Assertions.Assert.AreApproximatelyEqual (6f, panel.GetComponent<RectTransform>().anchoredPosition.x,0.1f);
+		Assert.AreEqual (-22.0f, panel.GetComponent<RectTransform> ().anchoredPosition.y);
+		Assert.AreEqual  (-33.6f,textPercentage.GetComponent<RectTransform>().anchoredPosition.x);
 		Assert.AreEqual  (-7.4f, textPercentage.GetComponent<RectTransform> ().anchoredPosition.y);
 		Assert.AreEqual (0.25f,wellDone.GetComponent<Transform>().position.x);
 		Assert.AreEqual (0.03f,wellDone.GetComponent<Transform>().position.y);
