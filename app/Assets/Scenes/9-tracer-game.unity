@@ -1061,7 +1061,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 329, y: -73.75}
+  m_AnchoredPosition: {x: 239.7287, y: -73.75}
   m_SizeDelta: {x: 640, y: 147.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &816059948
@@ -1096,7 +1096,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Tap all the glowing spots!
+  m_Text: "Tap \nall the glowing spots!"
 --- !u!222 &816059949
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2657,7 +2657,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -426, y: -343}
+  m_AnchoredPosition: {x: -320, y: -296}
   m_SizeDelta: {x: 640, y: 64}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1829406601
