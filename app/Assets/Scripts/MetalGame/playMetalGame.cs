@@ -17,11 +17,12 @@ public class playMetalGame : MonoBehaviour {
 		
 	// Update is called once per frame
 	void Update () {
-		if (Difficulty.easyMode) {
-			
-			GameObject obj = GameObject.FindWithTag ("item");
+		
+		if (Difficulty.easyMode && CompleteMetalGame.NumberItems != 0) {
 
-			if (obj != null && Time.time - hintSecond >= 5) {
+			if (Time.time - hintSecond >= 5) {
+
+				GameObject obj = GameObject.FindWithTag ("item");
 			
 				SpriteRenderer SR = obj.GetComponent<SpriteRenderer> ();
 

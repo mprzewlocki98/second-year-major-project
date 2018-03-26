@@ -66,7 +66,7 @@ public class MetalGamePlayModeTest {
 		foreach (GameObject obj in items) {
 			obj.GetComponent<DragItem> ().Invoke("OnMouseUp",0);
 		};
-		yield return new WaitForSeconds (1.5f);
+		yield return new WaitForSeconds (0.5f);
 		Assert.IsTrue(CompleteMetalGame.checkSuccess ());
 		Assert.IsTrue(wellDone.GetComponent<Animation> ().IsPlaying("wellDone"));
 		Assert.IsTrue(wellDone.GetComponent<AudioSource> ().isPlaying);
