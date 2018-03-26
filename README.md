@@ -33,8 +33,3 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 To execute both tests, launch Unity > Window > Test Runner. Toggle between
 the Edit Mode and Play Mode tabs to run the tests.
-
-## Closed branches
-
-You can retrieve and recreate a closed branch with the following command:
-git checkout -b new_branch_name archive/<branchname>
